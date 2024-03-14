@@ -1,0 +1,574 @@
+/*========== sidebare  ========== */
+*{
+  font-family:"poppind",sans-serif;
+  box-sizing: border-box;
+}
+body{
+  background-color: rgb(229, 226, 221);
+}
+.sidbar{
+  width: 80.2px;
+  background-color: rgb(98, 98, 164);
+  color: white;
+  height: 750px;
+  position: sticky;
+  transition: all 0.Ts linear;
+  overflow: hidden;
+  float: left;
+  margin-right: 20px;
+}
+.sidbar:hover{
+  width:222px ;
+  transition: 0.5s;
+  height: 750px;
+}
+.menu{
+  list-style-type: none;
+  padding-top: 90px;
+  font-size: 10;
+  height: 100%;
+  margin-left: -13px; 
+}
+.menu li{
+  padding: 0.5rem;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  width: 180px;
+  transition: all 0.5s ease-in-out;
+  /* height: 88%; */
+}
+.menu li:hover{
+  background-color: #e0e0e058;
+}
+
+.AlinkD {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  
+}
+.iconeDashbord {
+  font-size: 27px;
+  font-weight: bolder;
+  border-radius: 8px;
+  
+}
+.LOGOUT{
+  position: absolute;
+  bottom: 0;
+}
+
+/* .menu  Link .span {
+  overflow: hidden;
+} */
+
+/*========== top bare  ========== */
+.topbar{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap;
+   background: #fff;
+   border-radius: 10px;
+   padding-bottom:7px ;
+   height: 68px;
+  
+}
+.divA{
+  padding-top: 15px;
+  padding-right: 20px;
+}
+.logoA{
+  float: left;
+  color:  rgb(98, 98, 164);
+  margin-left: 30px;
+  margin-top: -15px;
+}
+.logoA p{
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+.logoA h4{
+  font-weight: bold;
+}
+.searchdiv{
+  margin-right: 30px;
+  float: left;
+}
+.searchdiv input{
+  border: 1px rgb(229, 226, 221);
+  padding-left: 40px;
+  height: 45px;
+  background-color: rgb(229, 226, 221);
+  border-radius: 12px;
+  position: relative;
+  margin-right: 20px;
+  width: 190px;
+}
+.searchdiv input:focus {
+  outline: none;  
+}
+.iconesearch{
+  position: absolute;
+  z-index: 1;
+  margin-left: 8px;
+  margin-top: 12px;
+  font-size: 20px;
+}
+.iconesearch:hover{
+  margin-left: 6px;
+  margin-top: 10px;
+  font-size: 25px;
+}
+.imgprofile{
+  height: 45px;
+  width: 45px;
+  border-radius: 60px;
+  background-color: blue;
+}
+
+.header{
+  position: relative;
+   z-index: 1;
+  display: flex;
+  justify-content:left;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #fff;
+  border-radius: 10px;
+  padding-bottom:5px ;
+  margin-top: 10px;
+  justify-content: center;
+  margin-right: 20px;
+}
+.pHES{
+  margin-top: 20px;
+  font-weight: bold;
+}
+.divH1{
+  background-color: rgb(255, 231, 255);
+  margin-left: 10px;
+  margin-top: 10 ;
+  float: left;
+  width: 270px;
+  padding:20px;
+  padding-top:25px;
+  border-radius: 10px;
+  height: 130px;
+  line-height: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.ensemDiv{
+  margin-left: 20px;
+}
+.iconeDat{
+  position: absolute;
+  font-size: 30px;
+
+}
+.picone{
+  background-color: orangered;
+  border-Radius:50px;
+  margin-top: -120px;
+  margin-left: 180px;
+  padding: 10px;
+  color:white ; 
+  height:50px;
+  width:50px;
+}
+
+
+/* table a */
+.tabHAcceuil{
+   justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-radius: 10px;
+  background: #fff;
+  padding-bottom:1px ;
+  margin-right: 20px;
+  margin-top: 10px;
+
+
+}
+.tabH{
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-radius: 10px;
+  background: #fff;
+  padding-bottom:5px ;
+ 
+  margin-top: 10px;
+  margin-right: 20px;
+
+}
+.pT{
+  margin-top: 10px;
+  margin-left: 30px;
+  font-weight: bold;
+  float: left;
+}
+
+table{
+  background: #fff;
+  padding: 1rem;
+  text-align: left;
+  border-radius: 10px;
+  width: 95%;
+  margin-left: 30px;
+ margin-bottom: 40px;
+}
+table td, th{
+  padding: 0.4rem 0.8rem;
+  
+}
+table th {
+  font-size: 15px;
+  background-color: rgb(98, 98, 164) ;
+  color: white;
+}
+table td{
+  font-size: 13px;
+  color: #044a49;
+  /* width: 95px; */
+}
+table tr:first-child,
+table tr:nth-child(2),
+table tr:nth-child(4),
+table tr:nth-child(6) {
+            background-color: rgb(238, 225, 227); /* Couleur de fond rose pour les cellules spécifiées */
+        }
+table tr:last-child{
+  color: white;
+  font-size: 15px;
+}
+.icontelecharger{
+  margin-bottom: 4px;
+  margin-right: 80px;
+}
+
+.large-delete-icon {
+  padding: 5px 15px;
+  background-color: rgb(247, 67, 31);
+  color: white;
+  border: 1px;
+  border-radius: 7px;
+  font-weight: bold;
+  width: 50px;
+  /* margin-right: -80px; */
+  height: 30px;
+  margin-left: 50%;
+}
+.large-delete-icon:hover{
+  box-shadow: 0 10px 10px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+.modifier {
+  
+  background-color: rgb(241, 206, 77);
+  color: white;
+  border: 1px;
+  border-radius: 7px;
+  font-weight: bold;
+  width: 50px;
+  
+  height: 30px;
+}
+.modifier:hover{
+  box-shadow: 0 10px 10px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+.telecharger {
+  padding: 5px 15px;
+  background-color: rgb(98, 98, 164);
+  color: white;
+  border: 1px;
+  border-radius: 7px;
+  font-weight: bold;
+  width: 50px;
+ margin-left: 90%;
+  height: 30px;
+}
+.telecharger:hover{
+  box-shadow: 0 10px 10px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+
+
+
+/* styles formulaire */
+
+
+.header form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.header input[type="text"] {
+  margin: 0 6px 8px 0; /* Marge entre les champs de texte */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.header input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.header input[type="text"]::placeholder {
+  color: #999;
+}
+
+
+.header input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.header input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.tr3{
+  margin-top: 7%;
+}
+.buttonfo{
+color: rgb(98, 98, 164) ;
+  border: 1px solid  rgb(98, 98, 164) ;
+ border-radius: 15px;
+ width: 90px;
+ height: 40px;
+ margin-top: 60px;
+ margin-left: 400%;
+ 
+}
+.buttonfo:hover{
+  background-color: rgb(98, 98, 164);
+  color: #fff;
+}
+
+/* =======style utilisateur========== */
+
+.btndetal{
+  padding: 5px 15px;
+  background-color: rgb(59, 207, 66);
+  color: white;
+  border: 1px;
+  border-radius: 7px;
+  font-weight: bold;
+  width: 50px;
+  margin-right: -80px;
+}
+.btndetal:hover{
+box-shadow: 0 10px 10px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.btnsuppe{
+padding: 5px 15px;
+background-color: rgb(247, 67, 31);
+color: white;
+border: 1px;
+border-radius: 7px;
+font-weight: bold;
+width: 50px;
+margin-right: -80px;
+}
+.btnsuppe:hover{
+box-shadow: 0 10px 10px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.tableU{
+background: #fff;
+padding: 1rem;
+text-align: left;
+border-radius: 10px;
+margin-right: 20px;
+margin-left: 30px;
+border: 1px solid rgb(210, 204, 204);
+}
+.tableU td, th{
+height: 40px;
+
+}
+.tableU th {
+font-size: 15px;
+background-color: rgb(98, 98, 164) ;
+color: white;
+}
+.tableU td{
+font-size: 14px;
+width: 95px;
+
+}
+table tr:first-child,
+table tr:nth-child(2),
+table tr:nth-child(4),
+table tr:nth-child(6) {
+          background-color: white;
+      }
+.tableU tr:last-child{
+color: white;
+font-size: 15px;
+}
+.tabHU{
+justify-content: space-between;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+border-radius: 10px;
+background: #fff;
+
+margin-top: 10px;
+width: 1100px;
+}
+.pTU{
+margin-left: 30px;
+font-weight: bold;
+float: left;
+}
+/* =======stylePROFIL========== */
+.profile-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0eeee;
+  width: 400px;
+  height: auto; /* ajusté à "auto" pour s'adapter au contenu */
+  border: 1px solid #ccc;
+  border-radius: 8px  8px 0px 0px ;
+  padding: 20px;
+  z-index: 1000;
+  margin-top: 3%;
+}
+
+.profile-picture {
+  margin-right: 20px;
+}
+
+.profile-picture img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 19px;
+}
+
+.profile-details {
+  text-align: left;
+}
+
+.profile-details h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.profile-details p {
+  margin-bottom: 5px;
+}
+
+.buutonprofil {
+  margin-top: 10px;
+  background-color: #b8bcb8;
+  color: white;
+  border: 1px;
+  border-radius: 7px;
+  font-weight: bold;
+  width: 70px;
+  border: #999 1px solid;
+  height: 30px;
+}
+
+.div2 {
+  position: absolute;
+  z-index: 1000;
+  left: 30; /* aligné à gauche */
+  width: 33%; /* occupe toute la largeur du profile-container */
+  background-color: #b8bcb8;
+  padding: 10px;
+  border-radius: 0px 0px 8px  8px;
+
+}
+/* formulaire ajouter admin */
+
+
+.containerfadmin {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.H1 {
+  text-align: center;
+}
+
+.form-groupad {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+.forAdmin{
+ 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.form-groupad {
+  margin-bottom: 20px;
+}
+
+.lbadmin {
+  display: block;
+  margin-bottom: 5px;
+  color: #333; /* Couleur du texte */
+}
+
+.inputAdmin {
+  margin-top: 2%;
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px; /* Taille de la police */
+  color: #555; /* Couleur du texte */
+  margin-left: 5%;
+}
+
+.inputAdmin:focus {
+  outline: none;
+  border-color: #007bff; /* Couleur de la bordure lorsqu'il est focus */
+}
+.linadmin{
+  margin-left: 40%;
+}
+
+
+.buutadmin {
+  background-color: #007bff; /* Couleur de fond */
+  color: #fff; /* Couleur du texte */
+  padding: 10px 20px; /* Espacement interne */
+  border: none; /* Suppression de la bordure */
+  border-radius: 5px; /* Arrondi des coins */
+  cursor: pointer; /* Curseur au survol */
+  margin-left: 77%;
+  margin-bottom: 2px;
+}
+
+.buutadmin:hover {
+  background-color: #0056b3; /* Couleur de fond au survol */
+}
+
+
+
+
