@@ -486,7 +486,7 @@ float: left;
   height: 30px;
 }
 
-.div2 {
+.div77 {
   position: absolute;
   z-index: 1000;
   left: 30; /* aligné à gauche */
@@ -568,6 +568,48 @@ label {
 .buutadmin:hover {
   background-color: #0056b3; /* Couleur de fond au survol */
 }
+
+/* ================= style detail emplacement =================== */
+
+.divdetailEmplacement{
+  height: 300px;
+  width: 450px;
+  background-color: #797272;
+  position: absolute;
+  border-radius: 20px;
+  margin-left: 370px;
+  margin-top: 100px;
+  color: white;
+  opacity:2;
+  z-index: 1;
+  padding-left: 100px;
+}
+.hjg{
+  margin-top: 80px;
+}
+.divbalck{
+  margin-top: -534px;
+  margin-left: 100px;
+  margin-right: 20px;
+  border-radius: 10px;
+  background-color: black;
+  height: 535px;
+  width: 8;
+  position: relative;
+  z-index: 2;
+  opacity: 0.9;
+}
+.iconeannuler{
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+  font-size: 25px;
+}
+
+
+
+
+
 
 
 

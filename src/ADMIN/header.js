@@ -42,7 +42,7 @@ export default function Header(){
                     </div>
 
                 </div>
-                <div className="div2">
+                <div className="div77">
                                 <p> <IoPersonAddOutline /><Link to="/AjouterAdmin">ajouter un autre compte</Link></p>
                 </div>
              

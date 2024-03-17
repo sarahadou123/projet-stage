@@ -1,0 +1,312 @@
+.headerProfilU{
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #fff;
+    border-radius: 10px;
+    padding-bottom:7px ;
+    height: 70px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .P1headerUt{
+    margin-left: 40px;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 1px;
+  }
+  .P1headerUt span{
+    font-style:italic;
+    color: blue;
+  }
+  .P2headerUt {
+    font-size: 12px;
+    margin-left: 45px;
+    color: rgb(140, 156, 156);
+  }
+  
+  /* =================== bouton logout ======================= */
+  .butonoutP{
+    padding-right:  30px;
+  }
+  .BtnPROU {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: blue;
+  }
+  
+  /* plus sign */
+  .sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sign svg {
+    width: 17px;
+  }
+  
+  .sign svg path {
+    fill: white;
+  }
+  /* textPR */
+  .textPR {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition-duration: .3s;
+  }
+  /* hover effect on button width */
+  .BtnPROU:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
+  }
+  
+  .BtnPROU:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+  }
+  /* hover effect button's textPR */
+  .BtnPROU:hover .textPR {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+  }
+  /* button click effect*/
+  .BtnPROU:active {
+    transform: translate(2px ,2px);
+  }
+  
+  
+  .containerProfileU{
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+    width: 90%;
+    padding-bottom: 50px;
+  }
+  .headerCont{
+    background-color:blue;
+    height: 180px;
+    width: 90%;
+    position: absolute;
+    border-radius: 5px;
+  }
+  .header2Cont{
+    /* background-color:rgb(221, 67, 226); */
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    border: 5px solid white;
+    position: absolute;
+    margin-top: 70px;
+    margin-left: 100px;
+  }
+  .header2Cont img {
+    width: 190px;
+    height: 190px;
+    border-radius: 100px;
+  }
+  .ptnediteProfile{
+    position: relative;
+    z-index: 2;
+    float: right;
+    margin-top: 220px;
+    margin-right: 30px;
+    border: 1px solid rgb(83, 83, 150);
+    border-radius: 20px;
+    padding: 6px 15px;
+    font-size: 15px;
+    color: rgb(83, 83, 150);
+    transition: all 0.7s ease;
+    background-color: white;
+  }
+  .ptnediteProfile:hover{
+    background-color: rgb(83, 83, 150);
+    color: white;
+    transition: all 0.7s ease;
+  }
+  .divformation{
+    position: relative;
+    padding-top: 280px;
+    padding-left: 100px ;
+  }
+  .divformation .p1{
+    font-size: 20px ;
+    font-weight: bold;
+    /* color: black; */
+    font-style: italic;
+  }
+  .p1 span{
+    font-size: 26px;
+    font-weight: bold;
+    margin-top:-20px;
+    color: blue;
+  }
+  .divformation .p3{
+    font-size: 12px;
+    color: rgb(91, 99, 99);
+    margin-top:-10px;
+    margin-left: 10px;
+  }
+  .conAFF{
+    border: 0.1px solid rgb(161, 161, 161);
+    width: 98%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .mesE{
+    font-size: 15px;
+    font-weight: bold;
+    float: left;
+    
+  }
+  .Mequipement{
+    width: 95%;
+    border-radius: 8px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+    padding: 20px 70px;
+    padding-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
+  .contAffecter{
+    margin-top: 40px;
+  }
+  .nomEquipe{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  
+  }
+  .nomEquipe span{
+    color :blueviolet;
+    font-weight: 1;
+    margin-left: 5px;
+  }
+  
+  .diE1 , .diE2 , .diE3 {
+    float: left;
+    margin-right: 70px;
+  }
+  .btnAffecter{
+    border: 1px solid rgb(167, 178, 243);
+    border-radius: 5px;
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 50px;
+    background-color: white;
+    padding: 2px 10px;
+    color: rgb(167, 178, 243);
+  }
+  .btnAffecter:hover{
+    color:blue ;
+    border: 1px solid blue;
+  }
+  
+  
+  
+  .AffecterEq{
+    height: 500px;
+    width: 570px;
+    background-color: white;
+    position: absolute;
+    border-radius: 20px;
+    margin-left: 370px;
+    margin-top: -670px;
+    color: white;
+    opacity:2;
+    z-index: 2;
+    padding-left: 50px;
+  }
+  .hjg{
+    margin-top: 50px;
+  }
+  .divbalckk{
+    margin-top: -760px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-left: 5px;
+    border-radius: 10px;
+    background-color: black;
+    height: 640px;
+    width: 99%;
+    position: fixed;
+    z-index: 2;
+    opacity: 0.7;
+  }
+  .iconeEannuler{
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-size: 25px;
+    position: relative;
+    z-index: 1;
+  }
+  .h2ajE{
+    background-color: blue;
+    height: 80px;
+    margin-top: -16px;
+    margin-left: -50px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding-left: 50px;
+    padding-top: 20px;
+  }
+  .contaifor{
+    margin-top: 30px;
+  }
+  .divINP1 {
+    float: left;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+  .divINP1 label{
+    color: black;
+  }
+  .divINP1 input{
+    border: 1px solid blue ;
+    border-radius: 5px;
+    outline: none;
+  }
+  .divINP1 input:hover{
+    border: 1.9px solid blue;
+    background-color: rgb(243, 243, 233);
+  }
+  .btnLAffecter input{
+    float: right;
+    margin-top: 90px;
+    margin-right: 50px;
+    border: 1px solid ;
+    width: 120px;
+    border-radius:5px; 
+    background-color: blue;
+    color: white;
+  }

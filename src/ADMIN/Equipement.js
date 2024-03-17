@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineTeam, AiOutlineUser, AiOutlineLogout, AiOutlineSearch, AiOutlineCheck } from "react-icons/ai";
+import { AiOutlineTeam, AiOutlineUser, AiOutlineLogout, AiOutlineSearch, AiOutlineCheck ,AiOutlineClose } from "react-icons/ai";
 import { VscSymbolEnum, VscVersions, VscTarget } from "react-icons/vsc";
 import "../StyleCss/Accueilstyle.css";
 import { BsFillPersonFill, BsFillPeopleFill, BsArrowLeftCircleFill, BsArchiveFill, BsBack } from "react-icons/bs";
@@ -9,8 +9,12 @@ import { IoOpenOutline } from "react-icons/io5";
 import { IoPersonAddOutline } from "react-icons/io5";
 import Header from "./header";
 import { useState } from "react";
+
+
+
+
 export default function ListeEquipement() {
-  const [showProfile, setShowProfile] = useState(false);
+  const [detailEmplacement, setdetailEmplacement] = useState(false);
   return (
     <div>
       <div className="sidbar">
@@ -22,7 +26,7 @@ export default function ListeEquipement() {
             </Link>
           </li>
           <li>
-            <Link to="/Profile" className="AlinkD">
+            <Link to="/profilDdmin" className="AlinkD">
               <BsFillPersonFill className="iconeDashbord" />
               <span>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;profile </span>
             </Link>
@@ -84,7 +88,7 @@ export default function ListeEquipement() {
                 <td>__</td>
                 <td>__</td>
                 <td>__</td>
-                <td><Link>YY2344</Link></td>
+                <td><Link onClick={()=>setdetailEmplacement(true)}>YY2344</Link></td>
                 <td>__</td>
                 <td>__</td>
               </tr>
@@ -223,6 +227,20 @@ export default function ListeEquipement() {
        
          
         </div>
+        {detailEmplacement && (
+                  <>
+                    <div className="divbalck">
+                        <div className="divdetailEmplacement">
+                                     <p><AiOutlineClose className="iconeannuler" onClick={()=>setdetailEmplacement(false)} /></p>
+                                    <p className="hjg">ste : #######</p>
+                                    <p>Code Locale : #####</p>
+                                    <p>Localisation : #~########## </p>
+                                    <p>Observation : ################## </p>
+                        </div>
+                    
+                    </div>
+                  </>
+                )}
       </div>
    
   );

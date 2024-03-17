@@ -1,4 +1,3 @@
-// import Accueil from "./ADMIN/Accueil";
 import App from "./ADMIN/AppAdmin";
 
 function Appprojet(){
