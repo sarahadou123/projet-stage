@@ -5,7 +5,7 @@ import Accueil from "./Accueil";
 import EquipemntEpla from "./Emplacement";
 import ListeEquipement from "./Equipement";
 import Etulisateur from "./Etulisateur";
-import Profile from "./Profile";
+import ProfileAdmin from "./Profile";
 import FormulaireContact from "./AjouterAdmin";
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
 
         <Routes>
           <Route path="/" exact element={<Accueil/>} />
-          <Route path="/Profile"  element={<Profile/>}  />
+          <Route path="/Profile"  element={<ProfileAdmin/>}  />
           <Route path="/Equipement"  element={<ListeEquipement/>}  />
           <Route path="/Emplacement" element={<EquipemntEpla/>} />
           <Route path="/Etulisateur" element={<Etulisateur/>}  />
