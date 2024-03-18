@@ -1,105 +1,302 @@
 *{
-font-family: sans-serif;
-/* color: rgb(68, 64, 64); */
-}
-.Containerlogin{
-  height: 500px;
-  width: 850px;
-  background-color: white ;
-  border-radius: 20px;
-  margin-left: 230px;
-  margin-top: 70px;
-  padding-top: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.div1Log{
-  height: 480px;
-  width: 420px;
-  background-color: rgb(52, 52, 235);
-  border-radius: 20px;
-  margin-left: 10px;
-  float: left;
-  margin-right: 20px;
+  font-family: sans-serif;
+  /* color: rgb(68, 64, 64); */
+  }
+  .Containerlogin{
+    height: 500px;
+    width: 850px;
+    background-color: white ;
+    border-radius: 20px;
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 70px;
+    padding-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .div1Log{
+    height: 480px;
+    width: 420px;
+    background-color: rgb(52, 52, 235);
+    border-radius: 20px;
+    margin-left: 10px;
+    float: left;
+    margin-right: 20px;
+    position: absolute;
+    transition: all 1s ease;
+  }
+  .div1SLog{
+    height: 480px;
+    width: 420px;
+    background-color: rgb(52, 52, 235);
+    border-radius: 20px;
+    margin-left: 10px;
+    float: left;
+    margin-right: 20px;
+    margin-left: 420px;
+    position: absolute;
+    transition: all 0.7s ease;
+  }
+  .imgonda{
+    height: 200px;
+    width: 300px;
+    position: absolute;
+    margin-left: 60px;
+    margin-top:90px ;
+  }
+  .h2div1SLog{
+    font-size: 20px;
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    /* font-weight: bold; */
+    margin-top: 330px;
+    text-align: center;
+  }
+  .pdiv1SLog{
+    color: rgb(190, 187, 187);
+    font-size: 13px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .div2Log{
+    height: 530px;
+    width: 380px;
+    border-radius: 20px;
+    /* background-color: rgb(52, 52, 235); */
+    margin-left: 460px;
+    /* float: left; */
+    padding-top: 30px;
+  }
+  .div12Log{
+    height: 530px;
+    width: 380px;
+    border-radius: 20px;
+    /* background-color: rgb(52, 52, 235); */
+    margin-left: 30px;
+    float: left;
+    padding-top: 30px;
+  }
+  .div2Log p {
+    font-size: 13px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 50px;
+  }
+  .div12Log p{
+    font-size: 13px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 20px;
+  }
   
-}
-.imgonda{
-  height: 200px;
-  width: 300px;
-  position: absolute;
-  margin-left: 60px;
-  margin-top:90px ;
-}
-.div1Log h2{
-  font-size: 20px;
-  color: white;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-  /* font-weight: bold; */
-  margin-top: 330px;
-  text-align: center;
-}
-.div1Log p{
-  color: rgb(190, 187, 187);
-  font-size: 13px;
-  text-align: center;
-  margin-top: 20px;
-}
-.div2Log{
-  height: 530px;
-  width: 380px;
-  border-radius: 20px;
-  /* background-color: rgb(52, 52, 235); */
-  margin-left: 10px;
-  float: left;
-  padding-top: 30px;
-}
-.div2Log p{
-  font-size: 13px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin-bottom: 50px;
-}
-.input1login , .input2login  {
-  margin-bottom: 30px;
-}
-.input1login input ,
-.input2login input {
-  border: 0.5px solid rgb(207, 201, 201);
-  border-radius: 7px;
-  padding: 7px;
-  padding-left: 20px;
-  width: 90%;
-  background-color: rgb(250, 247, 247);
-  margin-left: 5px;
-}
-.input1login input:focus ,
-.input2login input:focus {
-  outline: none;
-}
-.boutonlogin input{
-  border: 0.5px solid rgb(46, 105, 214);
-  border-radius: 7px;
-  padding: 7px;
-  padding-left: 20px;
-  width: 90%;
-  background-color: rgb(46, 105, 214);
-  margin-left: 5px;
-  color: white;
-  margin-top: 20px;
-}
-.PASOublier{
-  font-size: 13px;
-  margin-left: 220px;
-}
-.boutonGlogin input{
-  border: 0.5px solid rgb(203, 216, 240);
-  border-radius: 7px;
-  padding: 7px;
-  padding-left: 20px;
-  width: 90%;
-  background-color: rgb(203, 216, 240);
-  margin-left: 5px;
-  color: rgb(75, 72, 72);
-  margin-top: 10px;
-}
-
-
-
+  .input1login , .input2login  {
+    margin-bottom: 10px;
+  }
+  .input1login input ,
+  .input2login input {
+    border: 0.5px solid rgb(207, 201, 201);
+    border-radius: 7px;
+    padding: 7px;
+    padding-left: 20px;
+    width: 90%;
+    background-color: rgb(250, 247, 247);
+    margin-left: 5px;
+  }
+  .input1login input:focus ,
+  .input2login input:focus {
+    outline: none;
+  }
+  .boutonlogin input{
+    border: 0.5px solid rgb(46, 105, 214);
+    border-radius: 7px;
+    padding: 7px;
+    padding-left: 20px;
+    width: 90%;
+    background-color: rgb(46, 105, 214);
+    margin-left: 5px;
+    color: white;
+    margin-top: 30px;
+  }
+  .PASOublier{
+    font-size: 13px;
+    margin-left: 220px;
+  }
+  .boutonGlogin input{
+    border: 0.5px solid rgb(203, 216, 240);
+    border-radius: 7px;
+    padding: 7px;
+    padding-left: 20px;
+    width: 90%;
+    background-color: rgb(203, 216, 240);
+    margin-left: 5px;
+    color: rgb(75, 72, 72);
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+  .pseco{
+    text-align: center;
+    margin-top: 20px;
+  }
+  .pinscr{
+    margin-top: 50px;
+    margin-left: 10px;
+  }
+  /* @media screen and (max-width:1200px) {
+    .Containerlogin{
+      margin-left:150px ;
+    }
+    
+  }
+  @media screen and (min-width:992px) and (max-width:1190px) {
+    .Containerlogin{
+      margin-left:120px ;
+    }
+    
+  } */
+  
+  @media screen and (min-width:780px) and (max-width:991px) {
+    .Containerlogin{
+      width:  780px;
+    }
+    .div2Log{
+      width: 340px;
+      margin-left: 440px;
+    }
+    .PASOublier{
+      margin-left: 180px;
+    }
+    .div1Log {
+      width: 390px;
+    }
+    .div1SLog{
+      width: 390px;
+      margin-left: 370px;
+    }
+    .div12Log{
+      width: 340px;
+    }
+    
+  }
+  
+  @media screen and (min-width:481px) and (max-width:780px) {
+  
+  .Containerlogin{
+    margin-top: 20px;
+    width:  500px;
+    height: 640px;
+  }
+  .div2Log{
+    width: 340px;
+    margin-top: 200px;
+    margin-left: 40px;
+    height: 300px;
+    /* background-color: antiquewhite; */
+  }
+  .boutonlogin input{
+    margin-top: 10px;
+  }
+  .input1login , .input2login  {
+    margin-bottom: 2px;
+  }
+  .div2Log p{
+    margin-bottom: 30px;
+  }
+  .div2Log{
+    margin-left: 80px;
+  }
+  .pinscr{
+    margin-top: 20px;
+  }
+  .PASOublier{
+    margin-left: 180px;
+  }
+  .div1Log , .div1SLog{
+    width: 390px;
+    height: 200px;
+    margin-left: 55px;
+    margin-top: 10px;
+  }
+  
+  .div12Log{
+    margin-top:200px ;
+    width: 340px;
+    margin-left: 80px;
+  
+  }
+  .imgonda{
+    margin-top: -1px;
+    margin-left: 100px;
+    height: 120px;
+    width: 200px;
+  }
+  .h2div1SLog{
+    margin-top: 130px;
+    font-size: 19px;
+  }
+  .pdiv1SLog{
+    margin-top: -5px;
+    font-size: 11px;
+  }
+  
+  }
+  @media screen and (max-width:481px) {
+  
+    .Containerlogin{
+      margin-top: 20px;
+      width:  430px;
+      height: 640px;
+    }
+    .div2Log{
+      width: 340px;
+      margin-top: 200px;
+      margin-left: 40px;
+      height: 300px;
+      /* background-color: antiquewhite; */
+    }
+    .boutonlogin input{
+      margin-top: 10px;
+    }
+    .input1login , .input2login  {
+      margin-bottom: 2px;
+    }
+    .div2Log p{
+      margin-bottom: 30px;
+    }
+    .div2Log{
+      margin-left: 50px;
+    }
+    .pinscr{
+      margin-top: 20px;
+    }
+    .PASOublier{
+      margin-left: 180px;
+    }
+    .div1Log , .div1SLog{
+      width: 390px;
+      height: 200px;
+      margin-left: 20px;
+      margin-top: 10px;
+    }
+    
+    .div12Log{
+      margin-top:200px ;
+      width: 340px;
+      margin-left: 50px;
+  
+    }
+    .imgonda{
+      margin-top: -1px;
+      margin-left: 100px;
+      height: 120px;
+      width: 200px;
+    }
+    .h2div1SLog{
+      margin-top: 130px;
+      font-size: 19px;
+    }
+    .pdiv1SLog{
+      margin-top: -5px;
+      font-size: 11px;
+    }
+    
+  }
+  
+  
+  

@@ -21,7 +21,7 @@ export default function EquipemntEpla() {
       <div className="sidbar">
         <ul className="menu">
           <li className="active">
-            <Link to="/" className="AlinkD">
+            <Link to="/Accueil" className="AlinkD">
               <BsArrowLeftCircleFill className="iconeDashbord" />
               <span>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Accueil </span>
             </Link>
@@ -102,7 +102,7 @@ export default function EquipemntEpla() {
 
                 <th>N°Marche</th>
                 <th>supprission</th>
-                <th>conculter</th>
+                
                 <th>Modifier</th>
                 
               </tr>
@@ -121,9 +121,8 @@ export default function EquipemntEpla() {
                 <td>
                 <BsTrash3  className="large-delete-icon" style={{ cursor: 'pointer', marginLeft: '15px' }} />
             </td> 
-            <td> 
-              <td><button  className="btndetal"><AiFillEye style={{color:"white",fontSize:"20px"}} /></button> </td>
-              </td> 
+           
+               
               <td>
               <button  className="modifier"><BsPencilSquare  style={{color:"white",fontSize:"20px"}} /></button>
             </td>
@@ -142,9 +141,8 @@ export default function EquipemntEpla() {
                 <td>
                 <BsTrash3  className="large-delete-icon" style={{ cursor: 'pointer', marginLeft: '15px' }} />
             </td> 
-            <td> 
-              <td><button  className="btndetal"><AiFillEye style={{color:"white",fontSize:"20px"}} /></button> </td>
-              </td> 
+            
+               
               <td>
  <button  className="modifier"><BsPencilSquare  style={{color:"white",fontSize:"20px"}} /></button>            
             </td>
@@ -162,9 +160,7 @@ export default function EquipemntEpla() {
                 <td>
                 <BsTrash3  className="large-delete-icon" style={{ cursor: 'pointer', marginLeft: '15px' }} />
             </td> 
-            <td> 
-              <td><button  className="btndetal"><AiFillEye style={{color:"white",fontSize:"20px"}} /></button> </td>
-              </td> 
+           
               <td>
  <button  className="modifier"><BsPencilSquare  style={{color:"white",fontSize:"20px"}} /></button>            
             </td>
@@ -182,9 +178,7 @@ export default function EquipemntEpla() {
                 <td>
                 <BsTrash3  className="large-delete-icon" style={{ cursor: 'pointer', marginLeft: '15px' }} />
             </td> 
-            <td> 
-                 <td><button  className="btndetal"><AiFillEye style={{color:"white",fontSize:"20px"}} /></button> </td>
-              </td> 
+           
               <td>
  <button  className="modifier"><BsPencilSquare  style={{color:"white",fontSize:"20px"}} /></button>            
             </td>
@@ -202,9 +196,7 @@ export default function EquipemntEpla() {
                 <td>
                 <BsTrash3  className="large-delete-icon" style={{ cursor: 'pointer', marginLeft: '15px' }} />
             </td> 
-            <td> 
-                 <td><button  className="btndetal"><AiFillEye style={{color:"white",fontSize:"20px"}} /></button> </td>
-              </td> 
+           
               <td>
  <button  className="modifier"><BsPencilSquare  style={{color:"white",fontSize:"20px"}} /></button>            
             </td>

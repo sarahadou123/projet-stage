@@ -1,0 +1,50 @@
+{
+    "admin": [
+      {
+        "login": "admin1",
+        "password": 123,
+        "nom": "ait haddou",
+        "prenom": "sara"
+      },
+      {
+        "login": "admin2",
+        "password": 1234,
+        "nom": "ait haddou",
+        "prenom": "ahmed"
+      },
+      {
+        "login": "admin3",
+        "password": 12345,
+        "nom": "ait haddou",
+        "prenom": "omaima"
+      }
+     
+    ],
+    "etulisateur": [
+        {
+          "login": "etu1",
+          "password": 12376,
+          "nom": "ait haddou",
+          "prenom": "fati",
+          "nbraffectation": 50,
+          "matricule":"y2356"
+        
+        },
+        {
+            "login": "etu2",
+            "password": 9876,
+            "nom": "ait haddou",
+            "prenom": "fati",
+            "nbraffectation": 20,
+            "matricule":"y2356234"
+
+            }
+
+
+          
+          
+       
+       
+      ]
+
+  }

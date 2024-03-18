@@ -20,7 +20,7 @@ export default function ListeEquipement() {
       <div className="sidbar">
         <ul className="menu">
           <li className="active">
-            <Link to="/" className="AlinkD">
+            <Link to="/Accueil" className="AlinkD">
               <BsArrowLeftCircleFill className="iconeDashbord" />
               <span>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Accueil </span>
             </Link>
