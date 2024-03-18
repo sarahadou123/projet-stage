@@ -40,11 +40,31 @@
 
             }
 
-
-          
-          
        
+      ],
+      "equipement": [
+        {
+          "nomequipment": "pc",
+          "marque": "hp",
+          "modele": "model1",
+          "serie": "seri1",
+          "codebar": 50,
+          "emplacement":{
+            "codebar":50,
+            "situe":50,
+            "discription":"bireau",
+            "localisation":"bireau"
+
+          },
+          "affectationetulisateur": "y547",
+          "numeromarche":3453259
+         
+        
+        }
+       
+
        
       ]
+
 
   }
