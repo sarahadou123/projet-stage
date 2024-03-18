@@ -1,70 +1,71 @@
 {
-    "admin": [
-      {
-        "login": "admin1",
-        "password": 123,
-        "nom": "ait haddou",
-        "prenom": "sara"
+  "admin": [
+    {
+      "login": "admin1",
+      "password": 123,
+      "nom": "ait haddou",
+      "prenom": "sara",
+      "id": "7e29"
+    },
+    {
+      "login": "admin2",
+      "password": 1234,
+      "nom": "ait haddou",
+      "prenom": "ahmed",
+      "id": "c4bb"
+    },
+    {
+      "login": "admin3",
+      "password": 12345,
+      "nom": "ait haddou",
+      "prenom": "omaima",
+      "id": "9b80"
+    }
+  ],
+  "etulisateur": [
+    {
+      "login": "etu1",
+      "password": 12376,
+      "nom": "ait haddou",
+      "prenom": "fati",
+      "nbraffectation": 50,
+      "matricule": "y2356",
+      "id": "1ec2"
+    },
+    {
+      "login": "etu2",
+      "password": 9876,
+      "nom": "ait haddou",
+      "prenom": "fati",
+      "nbraffectation": 20,
+      "matricule": "y2356234",
+      "id": "c2a3"
+    },
+    {
+      "id": "1a32",
+      "Matricule": "2003",
+      "nom": "chaaoula",
+      "prenom": "imane",
+      "login": "imane",
+      "password": "imane21"
+    }
+  ],
+  "equipement": [
+    {
+      "nomequipment": "pc",
+      "marque": "hp",
+      "modele": "model1",
+      "serie": "seri1",
+      "codebar": 50,
+      "emplacement": {
+        "codebar": 50,
+        "situe": 50,
+        "discription": "bireau",
+        "localisation": "bireau"
       },
-      {
-        "login": "admin2",
-        "password": 1234,
-        "nom": "ait haddou",
-        "prenom": "ahmed"
-      },
-      {
-        "login": "admin3",
-        "password": 12345,
-        "nom": "ait haddou",
-        "prenom": "omaima"
-      }
-     
-    ],
-    "etulisateur": [
-        {
-          "login": "etu1",
-          "password": 12376,
-          "nom": "ait haddou",
-          "prenom": "fati",
-          "nbraffectation": 50,
-          "matricule":"y2356"
-        
-        },
-        {
-            "login": "etu2",
-            "password": 9876,
-            "nom": "ait haddou",
-            "prenom": "fati",
-            "nbraffectation": 20,
-            "matricule":"y2356234"
-
-            }
-
-       
-      ],
-      "equipement": [
-        {
-          "nomequipment": "pc",
-          "marque": "hp",
-          "modele": "model1",
-          "serie": "seri1",
-          "codebar": 50,
-          "emplacement":{
-            "codebar":50,
-            "situe":50,
-            "discription":"bireau",
-            "localisation":"bireau"
-
-          },
-          "affectationetulisateur": "y547",
-          "numeromarche":3453259
-         
-        
-        }
-       
-
-       
-      ]
-
-
-  }
+      "affectationetulisateur": "y547",
+      "numeromarche": 3453259,
+      "id": "7e57"
+    }
+  ]
+}

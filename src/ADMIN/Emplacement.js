@@ -52,7 +52,7 @@ export default function EquipemntEpla() {
           </li>
        
           <li className="LOGOUT">
-            <Link to="/logout" className="AlinkD">
+            <Link to="/" className="AlinkD">
               <AiOutlineLogout className="iconeDashbord" />
               <span>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;Logout </span>
             </Link>
@@ -64,7 +64,7 @@ export default function EquipemntEpla() {
               
           <Header/>
         <div className="header">
-          <form>
+          <form className="formEMp" >
             <tr>
                 <td> <input type="text" placeholder="Equipement"/></td>
                 <td><input type="text" placeholder="Marque"/></td>

@@ -23,41 +23,33 @@ export default function Header(){
             <input type="text" name="search" id="search" placeholder="Search" />
                   
                       <img className="imgprofile" src="profilprojet.jpg"  onClick={() => setShowProfile(true)}  />
-                                                
-                   <div>
-                              {showProfile && (
-              <>
-            <div>
-                <div className="profile-container">
-                      <div className="profile-picture">
-                       <img src="profilprojet.jpg" alt="Photo de profil" />
-                      </div>
-                    <div className="profile-details">
-                            <h3> ait haddou ahmed</h3>
-                                <p>ahmed@gemail.com</p>
-                             <p>afficher le compte <IoOpenOutline /></p>
-                             
-                             <button className="buutonprofil" onClick={() => setShowProfile(false)}>Fermer</button>  
-                             
-                    </div>
-
-                </div>
-                <div className="div77">
-                                <p> <IoPersonAddOutline /><Link to="/AjouterAdmin">ajouter un autre compte</Link></p>
-                </div>
-             
-            </div>
-
-              
-              </>
-            )}
-            </div>
-                  
-          
-                  
-                  
+               
           </div>
+
+          
         </div>
+        <div>
+              {showProfile && (
+                              <div>
+                                  <div className="profile-container">
+                                    <div className="profile-picture">
+                                    <img src="profilprojet.jpg" alt="Photo de profil" />
+                                  </div>
+                                    <div className="profile-details">
+                                        <h3> ait haddou ahmed</h3>
+                                        <p>ahmed@gemail.com</p>
+                                        <p>afficher le compte <IoOpenOutline /></p>
+                                        <button className="buutonprofil" onClick={() => setShowProfile(false)}>Fermer</button>  
+                                            
+                                    </div>
+
+                                </div>
+                                <div className="div77">
+                                  <p> <IoPersonAddOutline /><Link to="/AjouterAdmin">ajouter un autre compte</Link></p>
+                                </div>
+                              </div>
+                              )}
+            </div>
         </div>
         
        

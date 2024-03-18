@@ -1,13 +1,64 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../StyleCss/loginstyle.css"
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import { AiOutlineMail } from "react-icons/ai";
 // <AiOutlineMail />
 
 
-export default function Login(){
+export default function UseEffectLogin(props){
+
+  const {dataadmine , dataUtilisateur , setDatautilisateur}=props
   const [inscri,setinscri]=useState(false)
+  const [loginUA , setloginUA ] =useState("")
+  const [passwordUA , setpasswordUA ] =useState("")
+
+  const [Matricule , setMatricule]=useState()
+  const [nom, setNom]=useState()
+  const [prenom, setprenom]=useState()
+  const [login, setlogin]=useState()
+  const [password, setpassword]=useState()
+
+  const navigate=useNavigate()
+
+  function loginAdmiUtili(e){
+    e.preventDefault()
+
+    const admineExist=dataadmine.find(element => element.login ==  loginUA && element.password == passwordUA  );
+    const utiliExists=dataUtilisateur.find(element => element.login ==  loginUA && element.password == passwordUA  );
+    if(admineExist){
+      navigate("/Accueil")
+    }
+    else if(utiliExists){
+      navigate("/profileUtili")
+    }
+    else{
+      // alert("madaztch gaaaaaaaaaaaaaaaaaaaaaa3")
+      toast.error("utilisateur non exists , si vous n'avez pas de conpte vous devez inscrire  ", {
+        position: toast.POSITION.TOP_LEFT
+      })
+    }
+  }
+  function inscrire(e){
+    e.preventDefault()
+
+    axios.post('http://localhost:2000/etulisateur', {Matricule,nom,prenom,login,password})
+
+    setDatautilisateur([...dataUtilisateur,{Matricule,nom,prenom,login,password}]);
+    setMatricule('');
+    setNom("");
+    setprenom("");
+    setlogin("");
+    setpassword("");
+  }
+  
+
+
   return(
     <div>
       <div className="Containerlogin" >
@@ -16,22 +67,22 @@ export default function Login(){
           <p>Devenir un de nos Utilisateurs et S'inscrire  </p>
           <form>
             <div className="input1login">
-              <input type="text" placeholder="Matricule" />
+              <input type="text" placeholder="Matricule" value={Matricule} onChange={(e)=>setMatricule(e.target.value)} />
             </div>
             <div className="input1login">
-              <input type="text" placeholder="Nom" />
+              <input type="text" placeholder="Nom" value={nom} onChange={(e)=>setNom(e.target.value)}  />
             </div>
             <div className="input1login">
-              <input  type="text" placeholder="Prenom" />
+              <input  type="text" placeholder="Prenom" value={prenom} onChange={(e)=>setprenom(e.target.value)}  />
             </div>
             <div className="input1login">
-              <input  type="text" placeholder="login" />
+              <input  type="text" placeholder="login"  value={login} onChange={(e)=>setlogin(e.target.value)} />
             </div>
             <div className="input2login">
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" value={password} onChange={(e)=>setpassword(e.target.value)}  />
             </div>
             <div className="boutonlogin">
-              <input type="submit" value="s'inscrire" />
+              <input type="submit" value="s'inscrire" onClick={(e)=>inscrire(e)} />
             </div>
             <div>
               <p className="pseco" > <Link onClick={()=> setinscri(false)}>se connecter</Link></p>
@@ -50,14 +101,14 @@ export default function Login(){
           <p>Bienvenue Dans l'espace de Gestion de stock Equipement </p>
           <form>
             <div className="input1login" >
-              <input type="text" placeholder="login" />
+              <input type="text" placeholder="login" value={loginUA} onChange={(e)=>setloginUA(e.target.value)} />
             </div>
             <div className="input2login">
-              <input style={{marginTop:"15px"}} type="password" placeholder="Password" />
+              <input style={{marginTop:"15px"}} type="password" placeholder="Password" value={passwordUA} onChange={(e)=>setpasswordUA(e.target.value)} />
               <Link className="PASOublier">Oublier MotDePass ?</Link>
             </div>
             <div className="boutonlogin">
-              <input type="submit" value="Login" />
+              <input type="submit" value="Login" onClick={(e)=>loginAdmiUtili(e)} />
             </div>
             {/* <div className="boutonGlogin">
               <input type="submit" value="Connectez avec l'e-mail" />
@@ -71,6 +122,7 @@ export default function Login(){
         </div>
 
       </div>
+      <ToastContainer />
     </div>
   )
 }

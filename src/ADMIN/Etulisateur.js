@@ -45,7 +45,7 @@ export default function Utilisateurs(){
           </li>
          
           <li className="LOGOUT">
-            <Link to="/logout" className="AlinkD">
+            <Link to="/" className="AlinkD">
               <AiOutlineLogout className="iconeDashbord" />
               <span>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;Logout </span>
             </Link>
