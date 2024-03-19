@@ -53,7 +53,7 @@ function App() {
           <Route path="/Accueil" exact element={<Accueil/>} />
           <Route path="/Profile"  element={<ProfileAdmin/>}  />
           <Route path="/Equipement"  element={<ListeEquipement  data={data} setdata={setdata}/>}  />
-          <Route path="/Emplacement" element={<EquipemntEpla/>} />
+          <Route path="/Emplacement" element={<EquipemntEpla data={data} setdata={setdata}/>} />
           <Route path="/Etulisateur" element={<Etulisateur/>}  />
           <Route path="/AjouterAdmin" element={<FormulaireContact/>}  />
           <Route path="/profileUtili" element={<ProfileUtilisatuer/>}/>

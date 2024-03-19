@@ -14,8 +14,29 @@ import { BsTrash3 } from "react-icons/bs";
 import { BsArrow90DegRight } from "react-icons/bs";
 import { BsRepeat } from "react-icons/bs";
 import { useState } from "react";
-export default function EquipemntEpla() {
-  const [showProfile, setShowProfile] = useState(false);
+import axios from "axios";
+import { useEffect } from "react";
+export default function EquipemntEpla({data , setdata}) {
+ 
+
+
+ 
+
+  useEffect(() => {
+    axios.get("http://localhost:2000/equipement")
+      .then(response => setdata(response.data))
+      .catch(error => console.error("Error fetching data", error));
+  }, []);
+
+  const supprimerUtilisateur = (id) => {
+    axios.delete(`http://localhost:2000/equipement/${id}`)
+      .then(response => {
+        // Si la suppression est réussie, mettre à jour l'état local
+        setdata(data.filter(user => user.id !== id));
+      })
+      .catch(error => console.error("Error deleting user", error));
+  };
+
   return (
     <div>
       <div className="sidbar">
@@ -108,99 +129,32 @@ export default function EquipemntEpla() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>
-                <BsTrash3  className="large-delete-icon" style={{ cursor: 'pointer', marginLeft: '15px' }} />
-            </td> 
+            
+            
            
+              {data.map((elemnt)=><tr>
+
                
-              <td>
+                <td>{elemnt.nomequipment}</td>
+                <td>{elemnt.marque}</td>
+                <td>{elemnt.modele}</td>
+                <td>{elemnt.serie}</td>
+                <td>{elemnt.codebar}</td>
+                <td>{elemnt.emplacement.codebar}</td>
+                <td>{elemnt.affectationetulisateur}</td>
+                <td>{elemnt.numeromarche}</td>
+                <td>
+                  <button  className="btnsuppe"  onClick={() => supprimerUtilisateur(elemnt.id)}  ><BsTrash3 className="large-delete-icon" style={{ cursor: 'pointer', marginLeft: '15px' }} /></button>
+                
+                </td>
+                <td>
               <button  className="modifier"><BsPencilSquare  style={{color:"white",fontSize:"20px"}} /></button>
             </td>
-          
+
               </tr>
-              <tr>
                 
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>
-                <BsTrash3  className="large-delete-icon" style={{ cursor: 'pointer', marginLeft: '15px' }} />
-            </td> 
-            
-               
-              <td>
- <button  className="modifier"><BsPencilSquare  style={{color:"white",fontSize:"20px"}} /></button>            
-            </td>
-              </tr>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>
-                <BsTrash3  className="large-delete-icon" style={{ cursor: 'pointer', marginLeft: '15px' }} />
-            </td> 
-           
-              <td>
- <button  className="modifier"><BsPencilSquare  style={{color:"white",fontSize:"20px"}} /></button>            
-            </td>
-              </tr>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>
-                <BsTrash3  className="large-delete-icon" style={{ cursor: 'pointer', marginLeft: '15px' }} />
-            </td> 
-           
-              <td>
- <button  className="modifier"><BsPencilSquare  style={{color:"white",fontSize:"20px"}} /></button>            
-            </td>
-              </tr>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>
-                <BsTrash3  className="large-delete-icon" style={{ cursor: 'pointer', marginLeft: '15px' }} />
-            </td> 
-           
-              <td>
- <button  className="modifier"><BsPencilSquare  style={{color:"white",fontSize:"20px"}} /></button>            
-            </td>
-              </tr>
+                )
+                }
              
                 
               
