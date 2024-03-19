@@ -1,20 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineTeam, AiOutlineUser, AiOutlineLogout, AiOutlineSearch, AiOutlineCheck ,AiOutlineClose } from "react-icons/ai";
-import { VscSymbolEnum, VscVersions, VscTarget } from "react-icons/vsc";
-import "../StyleCss/Accueilstyle.css";
-import { BsFillPersonFill, BsFillPeopleFill, BsArrowLeftCircleFill, BsArchiveFill, BsBack } from "react-icons/bs";
+import { AiOutlineLogout, AiOutlineClose } from "react-icons/ai";
+import { BsArrowLeftCircleFill, BsFillPersonFill, BsFillPeopleFill, BsArchiveFill, BsBack, BsTrash3 } from "react-icons/bs";
 import { BiDownload } from "react-icons/bi";
-import { IoOpenOutline } from "react-icons/io5";
-import { IoPersonAddOutline } from "react-icons/io5";
 import Header from "./header";
-import { useState } from "react";
 
+export default function ListeEquipement({ data, setdata }) {
+  const [detailEmplacement, setdetailEmplacement] = useState(null);
 
+  const handleEmplacementClick = (emplacementDetails) => {
+    setdetailEmplacement(emplacementDetails);
+  };
 
-
-export default function ListeEquipement() {
-  const [detailEmplacement, setdetailEmplacement] = useState(false);
   return (
     <div>
       <div className="sidbar">
@@ -28,13 +25,13 @@ export default function ListeEquipement() {
           <li>
             <Link to="/profilDdmin" className="AlinkD">
               <BsFillPersonFill className="iconeDashbord" />
-              <span>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;profile </span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Profile </span>
             </Link>
           </li>
           <li>
             <Link to="/Equipement" className="AlinkD">
               <BsBack className="iconeDashbord" />
-              <span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;liste </span>
+              <span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;Liste </span>
             </Link>
           </li>
           <li>
@@ -49,199 +46,75 @@ export default function ListeEquipement() {
               <span>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Utilisateurs </span>
             </Link>
           </li>
-        
           <li className="LOGOUT">
-            <Link to="/" className="AlinkD">
+            <Link to="/logout" className="AlinkD">
               <AiOutlineLogout className="iconeDashbord" />
               <span>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;Logout </span>
             </Link>
           </li>
         </ul>
       </div>
-  
-        <Header/>
-        
-       
-        <div className="tabH">
-          <p className="pT">Liste Equipent  </p>
-          <div className="icontelecharger"><BiDownload className="telecharger" /></div>
 
-          <table>
-            <thead>
-              <tr>
-                
-                <th>Equipement</th>
-                <th>Marque</th>
-                <th>Modele</th>
-                <th>N°Service</th>
-                <th>CAB</th>
-                <th>Emplacement</th>
-                <th>Affecter</th>
-                <th>N°Marche</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td><Link onClick={()=>setdetailEmplacement(true)}>YY2344</Link></td>
-                <td>__</td>
-                <td>__</td>
-              </tr>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-              </tr>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-              </tr>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-              </tr>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-              </tr>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-              </tr>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-              </tr>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-              </tr>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-              </tr>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-              </tr>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-              </tr>
-              <tr>
-                
-                <td>PC</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-                <td>__</td>
-              </tr>
-         
-         
-             
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colSpan="9" style={{ backgroundColor: 'rgb(98, 98, 164)', color: " white", fontSize: "15px", fontWeight: "bold" }}></td>
-              </tr>
-            </tfoot>
-           
-          </table>
-       
-         
+      <Header />
+
+      <div className="tabH">
+        <p className="pT">Liste Equipement</p>
+        <div className="icontelecharger">
+          <BiDownload className="telecharger" />
         </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Equipement</th>
+              <th>Marque</th>
+              <th>Modele</th>
+              <th>N°Service</th>
+              <th>CAB</th>
+              <th>Emplacement</th>
+              <th>Affecter</th>
+              <th>N°Marche</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((element, index) => (
+              <tr key={index}>
+                <td>{element.nomequipment}</td>
+                <td>{element.marque}</td>
+                <td>{element.modele}</td>
+                <td>{element.serie}</td>
+                <td>{element.codebar}</td>
+                <td>
+                  <Link onClick={() => handleEmplacementClick(element.emplacement)}>
+                    {element.emplacement.codebar}
+                  </Link>
+                </td>
+                <td>{element.affectationetulisateur}</td>
+                <td>{element.numeromarche}</td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colSpan="9" style={{ backgroundColor: 'rgb(98, 98, 164)', color: "white", fontSize: "15px", fontWeight: "bold" }}></td>
+            </tr>
+          </tfoot>
+        </table>
+        
         {detailEmplacement && (
-                  <>
-                    <div className="divbalck">
-                        <div className="divdetailEmplacement">
-                                     <p><AiOutlineClose className="iconeannuler" onClick={()=>setdetailEmplacement(false)} /></p>
-                                    <p className="hjg">ste : #######</p>
-                                    <p>Code Locale : #####</p>
-                                    <p>Localisation : #~########## </p>
-                                    <p>Observation : ################## </p>
-                        </div>
-                    
-                    </div>
-                  </>
-                )}
+          <div className="divbalck3">
+            <div className="divdetailEmplacement">
+              <p><AiOutlineClose className="iconeannuler" onClick={() => setdetailEmplacement(null)} /></p>
+              <p className="hjg">ste: {detailEmplacement.situe}</p>
+              <p>Code Locale: {detailEmplacement.codelocal}</p>
+              <p>Localisation: {detailEmplacement.localisation}</p>
+              <p>Observation: {detailEmplacement.Observation}</p>
+            </div>
+            </div>
+         
+        )}
+         </div>
       </div>
-   
+  
   );
 }

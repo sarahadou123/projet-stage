@@ -30,24 +30,52 @@
       "prenom": "fati",
       "nbraffectation": 50,
       "matricule": "y2356",
+      "id": "4"
+    },
+    {
+      "login": "etu1",
+      "password": 12376,
+      "nom": "ait haddou",
+      "prenom": "fati",
+      "nbraffectation": 50,
+      "matricule": "y2356",
+      "id": "5"
+    },
+    {
+      "login": "etu1",
+      "password": 12376,
+      "nom": "ait haddou",
+      "prenom": "fati",
+      "nbraffectation": 50,
+      "matricule": "y2356",
       "id": "1ec2"
     },
     {
-      "login": "etu2",
-      "password": 9876,
+      "login": "etu1",
+      "password": 12376,
       "nom": "ait haddou",
       "prenom": "fati",
-      "nbraffectation": 20,
-      "matricule": "y2356234",
-      "id": "c2a3"
+      "nbraffectation": 50,
+      "matricule": "y2356",
+      "id": "6"
     },
     {
-      "id": "1a32",
-      "Matricule": "2003",
-      "nom": "chaaoula",
-      "prenom": "imane",
-      "login": "imane",
-      "password": "imane21"
+      "login": "etu1",
+      "password": 12376,
+      "nom": "ait haddou",
+      "prenom": "fati",
+      "nbraffectation": 50,
+      "matricule": "y2356",
+      "id": "7"
+    },
+    {
+      "login": "etu1",
+      "password": 12376,
+      "nom": "ait haddou",
+      "prenom": "fati",
+      "nbraffectation": 50,
+      "matricule": "y2356",
+      "id": "8"
     }
   ],
   "equipement": [
@@ -60,8 +88,43 @@
       "emplacement": {
         "codebar": 50,
         "situe": 50,
-        "discription": "bireau",
-        "localisation": "bireau"
+        "codelocal": 1234,
+        "localisation": "bireau",
+        "Observation": "hhhhhhhhhhhh"
+      },
+      "affectationetulisateur": "y547",
+      "numeromarche": 3453259,
+      "id": "7e57"
+    },
+    {
+      "nomequipment": "pc",
+      "marque": "hp",
+      "modele": "model1",
+      "serie": "seri1",
+      "codebar": 90,
+      "emplacement": {
+        "codebar": 9,
+        "situe": "bireau",
+        "codelocal": 9,
+        "localisation": "bireau",
+        "Observation": "bien"
+      },
+      "affectationetulisateur": "y547",
+      "numeromarche": 3453259,
+      "id": "7e57"
+    },
+    {
+      "nomequipment": "pc",
+      "marque": "hp",
+      "modele": "model1",
+      "serie": "seri1",
+      "codebar": 50000,
+      "emplacement": {
+        "codebar": 500000,
+        "situe": "bireau",
+        "codelocal": 2682132,
+        "localisation": "bireau",
+        "Observation": "uyvftsj"
       },
       "affectationetulisateur": "y547",
       "numeromarche": 3453259,

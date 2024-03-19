@@ -14,6 +14,8 @@ import ProfileUtilisatuer from "./profileUtilisateur"
 function App() {
   const [dataadmine, setdataadmine]=useState([])
   const [dataUtilisateur , setDatautilisateur]=useState([])
+  const [data,setdata]=useState([]);
+
   useEffect( ()=>
   {
     axios.get('http://localhost:2000/admin')
@@ -28,8 +30,16 @@ function App() {
     .then(reponse => setDatautilisateur(reponse.data))
     .catch(error => console.error('error fetch :',error))
   }
+  
  
   ,[])
+  useEffect(() => {
+    axios.get("http://localhost:2000/equipement")
+      .then(response => setdata(response.data))
+      .catch(error => console.error("Error fetching data", error));
+  }, []);
+
+
   return (
     <Router>
       <div>
@@ -42,7 +52,7 @@ function App() {
           <Route path="/" exact element={<Login dataadmine={dataadmine}    dataUtilisateur={dataUtilisateur}  setDatautilisateur={setDatautilisateur}  />} />
           <Route path="/Accueil" exact element={<Accueil/>} />
           <Route path="/Profile"  element={<ProfileAdmin/>}  />
-          <Route path="/Equipement"  element={<ListeEquipement/>}  />
+          <Route path="/Equipement"  element={<ListeEquipement  data={data} setdata={setdata}/>}  />
           <Route path="/Emplacement" element={<EquipemntEpla/>} />
           <Route path="/Etulisateur" element={<Etulisateur/>}  />
           <Route path="/AjouterAdmin" element={<FormulaireContact/>}  />
