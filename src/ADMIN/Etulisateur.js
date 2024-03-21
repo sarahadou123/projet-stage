@@ -72,6 +72,7 @@ export default function Utilisateurs() {
      
       </div>
       <Header />
+    <div className="contEmpl">
       <div className="tabHU">
         <p className="pTU">Listes des Utilisateurs </p>
         <table className="tableU">
@@ -97,6 +98,7 @@ export default function Utilisateurs() {
           </tbody>
         </table>
       </div>
+    </div>
     </div>
   );
 }

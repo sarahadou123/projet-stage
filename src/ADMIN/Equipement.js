@@ -56,13 +56,27 @@ export default function ListeEquipement({ data, setdata }) {
       </div>
 
       <Header />
-
+    <div className="contEmpl">
       <div className="tabH">
         <p className="pT">Liste Equipement</p>
+        {detailEmplacement && (
+          <div>
+            <div className="divbalck">
+          </div>
+          <div className="divdetailEmplacement">
+            <p><AiOutlineClose className="iconeannuler" onClick={() => setdetailEmplacement(null)} /></p>
+            <p className="hjg">ste: {detailEmplacement.situe}</p>
+            <p>Code Locale: {detailEmplacement.codelocal}</p>
+            <p>Localisation: {detailEmplacement.localisation}</p>
+            <p>Observation: {detailEmplacement.Observation}</p>
+          </div>
+        </div>
+         
+        )}
         <div className="icontelecharger">
           <BiDownload className="telecharger" />
         </div>
-
+        
         <table>
           <thead>
             <tr>
@@ -100,21 +114,10 @@ export default function ListeEquipement({ data, setdata }) {
             </tr>
           </tfoot>
         </table>
-        
-        {detailEmplacement && (
-          <div className="divbalck3">
-            <div className="divdetailEmplacement">
-              <p><AiOutlineClose className="iconeannuler" onClick={() => setdetailEmplacement(null)} /></p>
-              <p className="hjg">ste: {detailEmplacement.situe}</p>
-              <p>Code Locale: {detailEmplacement.codelocal}</p>
-              <p>Localisation: {detailEmplacement.localisation}</p>
-              <p>Observation: {detailEmplacement.Observation}</p>
-            </div>
-            </div>
-         
-        )}
-         </div>
       </div>
+        
+         </div>
+    </div>  
   
   );
 }

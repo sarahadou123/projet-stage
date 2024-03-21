@@ -29,7 +29,7 @@ function FormulaireContact() {
         </div>
                <button className='buutadmin' type="submit">Envoyer</button>
       </form>
-      <Link className='linadmin' to="/">
+      <Link className='linadmin' to="/Accueil">
       retour
       </Link> 
       </div>

@@ -16,6 +16,8 @@ function App() {
   const [dataUtilisateur , setDatautilisateur]=useState([])
   const [data,setdata]=useState([]);
 
+  const [idUtili,setidUtili]=useState("")
+
   useEffect( ()=>
   {
     axios.get('http://localhost:2000/admin')
@@ -49,14 +51,14 @@ function App() {
 
         <Routes>
           
-          <Route path="/" exact element={<Login dataadmine={dataadmine}    dataUtilisateur={dataUtilisateur}  setDatautilisateur={setDatautilisateur}  />} />
+          <Route path="/" exact element={<Login dataadmine={dataadmine}    dataUtilisateur={dataUtilisateur}  setDatautilisateur={setDatautilisateur} idUtili={idUtili} setidUtili={setidUtili}   />} />
           <Route path="/Accueil" exact element={<Accueil/>} />
-          <Route path="/Profile"  element={<ProfileAdmin/>}  />
-          <Route path="/Equipement"  element={<ListeEquipement  data={data} setdata={setdata}/>}  />
+          <Route path="/Profile"  element={<ProfileAdmin/>} />
+          <Route path="/Equipement"  element={<ListeEquipement  data={data} setdata={setdata}/>} />
           <Route path="/Emplacement" element={<EquipemntEpla data={data} setdata={setdata}/>} />
-          <Route path="/Etulisateur" element={<Etulisateur/>}  />
+          <Route path="/Etulisateur" element={<Etulisateur />}  />
           <Route path="/AjouterAdmin" element={<FormulaireContact/>}  />
-          <Route path="/profileUtili" element={<ProfileUtilisatuer/>}/>
+          <Route path="/profileUtili" element={<ProfileUtilisatuer idUtili={idUtili}      dataUtilisateur={dataUtilisateur} />}/>
          
           
         </Routes>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineTeam, AiOutlineUser, AiOutlineLogout, AiOutlineSearch, AiOutlineCheck } from "react-icons/ai";
+import { AiOutlineTeam, AiOutlineUser, AiOutlineLogout, AiOutlineSearch, AiOutlineCheck ,AiOutlineClose} from "react-icons/ai";
 import { VscSymbolEnum, VscVersions, VscTarget } from "react-icons/vsc";
 import { AiFillEye} from "react-icons/ai";
 import { BsPencilSquare } from "react-icons/bs";
@@ -16,17 +16,97 @@ import { BsRepeat } from "react-icons/bs";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+
+
+
 export default function EquipemntEpla({data , setdata}) {
- 
+  const [selectedModel, setSelectedModel] = useState('');
+  const [customModel, setCustomModel] = useState('');
+  const [showCustomInput, setShowCustomInput] = useState(false);
+
+  const [nameEquipement, setnameEquipement ]=useState("")
+  const [marqueE, setmarqueE ]=useState("")
+  const [Numsérie, setNumsérie ]=useState("")
+  const [CAB, setCAB ]=useState("")
+  const [NumMarche, setNumMarche ]=useState("")
+  const [matriculeUTilisateur, setmatriculeUTilisateur ]=useState("")
+  const [EmplacementCAB, setEmplacementCAB]=useState("")
+  const [SiteEplac, setSiteEplac ]=useState("")
+  const [CodeLocaleE, setCodeLocaleE ]=useState("")
+  const [LocalisationE, setLocalisationE ]=useState("")
+  const [ObservationE, setObservationE ]=useState("")
+  const [model,setmodele]=useState("")
+
+  const [idmodiff, setidmodiff]=useState()
 
 
+  const handleModelChange = (e) => {
+    const selectedValue = e.target.value;
+    setSelectedModel(selectedValue);
+    setShowCustomInput(selectedValue === 'custom');
+    if (selectedValue === 'custom') {
+      setCustomModel('');
+    }
+    setmodele(selectedValue)
+  };
+  const handleCustomModelChange = (e) => {
+        setCustomModel(e.target.value);
+        setmodele(e.target.value);
+      };
+    
+  const handleCustomClick = () => {
+      setSelectedModel('custom');
+      setShowCustomInput(true);
+  }; 
+  
  
+  
 
   useEffect(() => {
     axios.get("http://localhost:2000/equipement")
       .then(response => setdata(response.data))
       .catch(error => console.error("Error fetching data", error));
   }, []);
+  
+
+  function AjoutEquipement(e){
+    // e.preventDefault()
+    const nouvelEquipement = {
+      nomequipment: nameEquipement,
+      marque: marqueE,
+      modele: model,
+      serie: Numsérie,
+      codebar: CAB,
+      emplacement: {
+          codebar: EmplacementCAB,
+          situe: SiteEplac,
+          codelocal: CodeLocaleE,
+          localisation: LocalisationE,
+          Observation: ObservationE
+      },
+      affectationetulisateur:matriculeUTilisateur,
+      numeromarche:NumMarche
+    };
+    axios.post('http://localhost:2000/equipement',nouvelEquipement)
+
+    setdata([...data,nouvelEquipement]);
+
+    setnameEquipement('');
+    setmarqueE("");
+    setNumsérie("");
+    setCAB("");
+    setNumMarche("");
+    setmatriculeUTilisateur("");
+    setEmplacementCAB("");
+    setSiteEplac("");
+    setCodeLocaleE("");
+    setLocalisationE("");
+    setObservationE("");
+    setSelectedModel("")
+    setCustomModel("")
+    setShowCustomInput(false)
+    // console.log(model)
+  }
 
   const supprimerUtilisateur = (id) => {
     axios.delete(`http://localhost:2000/equipement/${id}`)
@@ -36,6 +116,62 @@ export default function EquipemntEpla({data , setdata}) {
       })
       .catch(error => console.error("Error deleting user", error));
   };
+
+  function modifierEquipe(id ){
+    const EquipemetModif=data.find(element => element.id==id  );
+    if (EquipemetModif) {
+      setnameEquipement(EquipemetModif.nomequipment);
+      setmarqueE(EquipemetModif.marque);
+      setNumsérie(EquipemetModif.serie);
+      setCAB(EquipemetModif.codebar);
+      setNumMarche(EquipemetModif.numeromarche);
+      setmatriculeUTilisateur(EquipemetModif.affectationetulisateur);
+      setEmplacementCAB(EquipemetModif.emplacement.codebar);
+      setSiteEplac(EquipemetModif.emplacement.situe);
+      setCodeLocaleE(EquipemetModif.emplacement.codelocal);
+      setLocalisationE(EquipemetModif.emplacement.localisation);
+      setObservationE(EquipemetModif.emplacement.Observation);
+      setSelectedModel(EquipemetModif.modele);
+      setCustomModel(EquipemetModif.modele)
+      setidmodiff(EquipemetModif.id)
+    }
+
+    
+
+  }
+ 
+
+  function modifierEuipement(){
+   const existE= data.find(element => element.id==idmodiff  )
+
+   if (existE){
+    existE.nomequipment=nameEquipement ;
+    if (selectedModel){
+      existE.modele=selectedModel
+    }
+    else{
+      existE.modele=customModel
+    };
+    existE.marque=marqueE ;
+    existE.serie=Numsérie ;
+    existE.codebar=CAB ;
+    existE.emplacement.codebar=EmplacementCAB ;
+    existE.emplacement.situe=SiteEplac ;
+    existE.emplacement.codelocal=CodeLocaleE ;
+    existE.emplacement.localisation=LocalisationE ;
+    existE.emplacement.Observation=ObservationE ;
+    existE.affectationetulisateur=matriculeUTilisateur ;
+    existE.numeromarche=NumMarche ;
+   }
+     
+   axios.put(`http://localhost:2000/equipement/${existE.id}`, existE)
+   .then(response => {
+                      console.log('Data updated:', response.data);
+                      alert('Data updated successfully');
+                    })
+   .catch(error => {console.error('Error updating data:', error);});
+  }
+
 
   return (
     <div>
@@ -84,29 +220,66 @@ export default function EquipemntEpla({data , setdata}) {
 
               
           <Header/>
+      <div className="contEmpl">
         <div className="header">
           <form className="formEMp" >
             <tr>
-                <td> <input type="text" placeholder="Equipement"/></td>
-                <td><input type="text" placeholder="Marque"/></td>
-                <td> <input type="text" placeholder="Modele"/></td>
-                <td><input type="text"placeholder="N°Service"/><br/></td>
+                <td> 
+                  <input type="text" placeholder="Equipement" value={nameEquipement} onChange={(e)=>setnameEquipement(e.target.value)} />
+                </td>
+                <td>
+                  <input type="text" placeholder="Marque" value={marqueE} onChange={(e)=>setmarqueE(e.target.value)}/>
+                </td>
+                <td>
+                  {showCustomInput ?
+                  (
+                    <div>
+                      <input
+                        type="text"
+                        placeholder="Saisir Modele"
+                        value={customModel}
+                        onChange={handleCustomModelChange}
+                      />
+                      <AiOutlineClose className="iconeANULmodel" onClick={() => setShowCustomInput(false)} />
+                    </div>
+                  )
+                    :(
+                      <select id="pcModel" value={selectedModel} onChange={handleModelChange}>
+                        <option value="">Modele</option>
+                        {[...new Set(data.map(model => model.modele))].map((uniqueModel, index) => (
+                            <option key={index} value={uniqueModel}>{uniqueModel}</option>
+                        ))}
+                        <option value="custom">Saisir modele</option>
+                      </select>
+                    ) 
+                  
+                   }
+                </td>
+                <td>
+                  <input type="text"placeholder="N°Série" value={Numsérie} onChange={(e)=>setNumsérie(e.target.value)}/><br/>
+                </td>
 
             </tr>
             <tr className="tr2">
-                <td><input type="text" placeholder="CAB"/></td>
-                <td>  <input type="text" placeholder="Emplacement"/></td>
-                <td><input type="text"placeholder="N°Marche"/></td>
-                <td><input type="text"placeholder="matricule utilisateur"/></td>
+                <td><input type="text" placeholder="CAB" value={CAB} onChange={(e)=>setCAB(e.target.value)}/></td>
+                <td><input type="text" placeholder="Emplacement CAB" value={EmplacementCAB} onChange={(e)=>setEmplacementCAB(e.target.value)}/></td>
+                <td><input type="text"placeholder="site Emplacement" value={SiteEplac} onChange={(e)=>setSiteEplac(e.target.value)}/></td>
+                <td><input type="text"placeholder="Code Locale Emplacement" value={CodeLocaleE} onChange={(e)=>setCodeLocaleE(e.target.value)}/></td>
+            </tr>
+            <tr className="tr2">
+                <td><input type="text"placeholder="Localisation Emplacement"  value={LocalisationE} onChange={(e)=>setLocalisationE(e.target.value)}/></td>
+                <td><input type="text"placeholder="observation Emplacement " value={ObservationE} onChange={(e)=>setObservationE(e.target.value)}/></td>
+                <td><input type="text"placeholder="N°Marche" value={NumMarche} onChange={(e)=>setNumMarche(e.target.value)}/></td>
+                <td><input type="text"placeholder="matricule utilisateur" value={matriculeUTilisateur} onChange={(e)=>setmatriculeUTilisateur(e.target.value)}/></td>
             </tr>
             <tr className="trtr3button3">
-                <td><button type="button" className="buttonfo" >Ajouter</button></td>
-                <td><button type="button"className="buttonfo"  >Modifier</button>
+                <td><button type="button" className="buttonfo" onClick={(e)=>AjoutEquipement(e)} >Ajouter</button></td>
+                <td><button className="buttonfo" onClick={()=>modifierEuipement()} >Modifier</button>
             </td>
             </tr>
             </form>
         </div>
-        <div className="tabH">
+        <div className="tabH" >
           <p className="pT">liste Equipement </p>
 
           <table>
@@ -132,38 +305,30 @@ export default function EquipemntEpla({data , setdata}) {
             
             
            
-              {data.map((elemnt)=><tr>
-
-               
+              {data.map((elemnt)=>
+              <tr>
                 <td>{elemnt.nomequipment}</td>
                 <td>{elemnt.marque}</td>
                 <td>{elemnt.modele}</td>
                 <td>{elemnt.serie}</td>
                 <td>{elemnt.codebar}</td>
-                <td>{elemnt.emplacement.codebar}</td>
+                <td>{elemnt.emplacement ? elemnt.emplacement.codebar : ''}</td>
                 <td>{elemnt.affectationetulisateur}</td>
                 <td>{elemnt.numeromarche}</td>
                 <td>
                   <button  className="btnsuppe"  onClick={() => supprimerUtilisateur(elemnt.id)}  ><BsTrash3 className="large-delete-icon" style={{ cursor: 'pointer', marginLeft: '15px' }} /></button>
-                
                 </td>
                 <td>
-              <button  className="modifier"><BsPencilSquare  style={{color:"white",fontSize:"20px"}} /></button>
-            </td>
-
+                  <button  className="modifier" onClick={()=>modifierEquipe(elemnt.id) } ><BsPencilSquare style={{color:"white",fontSize:"20px"}} /></button>
+                </td>
               </tr>
                 
-                )
-                }
+                )}
              
-                
-              
-             
-               
-             
+            
             </tbody>
-            <tfoot>
-              <tr  >
+            <tfoot  >
+              <tr>
                 <td className="tfoot" colSpan="12" style={{ backgroundColor: 'rgb(98, 98, 164)',color: " white", fontSize: "15px", fontWeight: "bold" }}></td>
               </tr>
             </tfoot>
@@ -175,9 +340,10 @@ export default function EquipemntEpla({data , setdata}) {
           
         </div>
         
-        
+        </div>  
     </div>
             
   
   );
 }
+

@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function UseEffectLogin(props){
 
-  const {dataadmine , dataUtilisateur , setDatautilisateur}=props
+  const {dataadmine , dataUtilisateur , setDatautilisateur ,idUtili ,setidUtili }=props
   const [inscri,setinscri]=useState(false)
   const [loginUA , setloginUA ] =useState("")
   const [passwordUA , setpasswordUA ] =useState("")
@@ -33,12 +33,15 @@ export default function UseEffectLogin(props){
     const utiliExists=dataUtilisateur.find(element => element.login ==  loginUA && element.password == passwordUA  );
     if(admineExist){
       navigate("/Accueil")
+      setidUtili(admineExist.id)
     }
     else if(utiliExists){
       navigate("/profileUtili")
+      setidUtili(utiliExists.id)
+      
     }
     else{
-      // alert("madaztch gaaaaaaaaaaaaaaaaaaaaaa3")
+      // alert("utilisateur non exists , si vous n'avez pas de conpte vous devez inscrire")
       toast.error("utilisateur non exists , si vous n'avez pas de conpte vous devez inscrire  ", {
         position: toast.POSITION.TOP_LEFT
       })
