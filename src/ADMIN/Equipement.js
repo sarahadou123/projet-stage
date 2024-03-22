@@ -116,6 +116,7 @@ export default function ListeEquipement({ data, setdata }) {
         </table>
       </div>
         
+        
          </div>
     </div>  
   
