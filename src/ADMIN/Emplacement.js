@@ -19,7 +19,7 @@ import { useEffect } from "react";
 
 
 
-export default function EquipemntEpla({data , setdata}) {
+export default function EquipemntEpla({data , setdata,activites, setActivites}) {
   const [selectedModel, setSelectedModel] = useState('');
   const [customModel, setCustomModel] = useState('');
   const [showCustomInput, setShowCustomInput] = useState(false);
@@ -38,6 +38,23 @@ export default function EquipemntEpla({data , setdata}) {
   const [model,setmodele]=useState("")
 
   const [idmodiff, setidmodiff]=useState()
+ 
+  // const [selectedModel, setSelectedModel] = useState("");
+  
+
+ 
+  const ajouterActivite = (action, description) => {
+    const nouvelleActivite = {
+      action: action,
+      description: description,
+      date: new Date().toLocaleString(),
+    };
+    setActivites([...activites, nouvelleActivite]);
+  };
+
+
+
+
 
 
   const handleModelChange = (e) => {
@@ -87,6 +104,8 @@ export default function EquipemntEpla({data , setdata}) {
       affectationetulisateur:matriculeUTilisateur,
       numeromarche:NumMarche
     };
+    ajouterActivite("Ajout", "Ajout d'un équipement");
+
     axios.post('http://localhost:2000/equipement',nouvelEquipement)
 
     setdata([...data,nouvelEquipement]);
@@ -108,13 +127,23 @@ export default function EquipemntEpla({data , setdata}) {
     // console.log(model)
   }
 
-  const supprimerUtilisateur = (id) => {
+// Fonction pour supprimer un équipement
+const supprimerUtilisateur = (id) => {
+  // Logique pour supprimer un équipement
+  const confirmation = window.confirm("Voulez-vous vraiment supprimer cet équipement ?");
+  if (confirmation) {
     axios.delete(`http://localhost:2000/equipement/${id}`)
       .then(response => {
-        // Si la suppression est réussie, mettre à jour l'état local
-        setdata(data.filter(user => user.id !== id));
+        // Si la suppression réussit, mettre à jour les données d'équipement et les activités
+        setdata(data.filter(equipement => equipement.id !== id)); // Filtrer pour supprimer l'équipement supprimé
+        ajouterActivite("Suppression", "Suppression d'un équipement"); // Ajouter une activité pour la suppression
       })
-      .catch(error => console.error("Error deleting user", error));
+      .catch(error => console.error("Erreur lors de la suppression de l'équipement", error));
+  }
+
+
+   
+
   };
 
   function modifierEquipe(id ){
@@ -163,7 +192,8 @@ export default function EquipemntEpla({data , setdata}) {
     existE.affectationetulisateur=matriculeUTilisateur ;
     existE.numeromarche=NumMarche ;
    }
-     
+   ajouterActivite("Modification", "Modification d'un équipement");
+ 
    axios.put(`http://localhost:2000/equipement/${existE.id}`, existE)
    .then(response => {
                       console.log('Data updated:', response.data);

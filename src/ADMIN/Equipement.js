@@ -4,13 +4,57 @@ import { AiOutlineLogout, AiOutlineClose } from "react-icons/ai";
 import { BsArrowLeftCircleFill, BsFillPersonFill, BsFillPeopleFill, BsArchiveFill, BsBack, BsTrash3 } from "react-icons/bs";
 import { BiDownload } from "react-icons/bi";
 import Header from "./header";
+import axios from 'axios';
+import * as XLSX from 'xlsx';
 
 export default function ListeEquipement({ data, setdata }) {
   const [detailEmplacement, setdetailEmplacement] = useState(null);
-
+ 
   const handleEmplacementClick = (emplacementDetails) => {
     setdetailEmplacement(emplacementDetails);
   };
+  const [dataequip, setDataequip] = useState([]);
+  const fetchDataAndExportToExcel = async () => {
+    try {
+      const response = await axios.get('http://localhost:2000/equipement');
+      setDataequip(response.data);
+
+      exportToExcel(response.data);
+    } catch (error) {
+      console.error('Erreur lors de la récupération des données ou de l\'exportation vers Excel : ', error);
+    }
+  };
+  const exportToExcel = (data) => {
+    const formattedData = data.map(item => ({
+      nomequipment: item.nomequipment,
+      marque: item.marque,
+      modele: item.modele,
+      serie: item.serie,
+      codebar: item.codebar,
+      emp_situe: item.emplacement.situe,
+      emp_codelocal: item.emplacement.codelocal,
+      emp_localisation: item.emplacement.localisation,
+      emp_Observation: item.emplacement.Observation,
+      affectationetulisateur: item.affectationetulisateur,
+      numeromarche: item.numeromarche,
+      id: item.id
+    }));
+  
+    const worksheet = XLSX.utils.json_to_sheet(formattedData);
+    
+    // Applying cell styles for specific fields
+    worksheet.A1.s = { fill: { fgColor: { rgb: "FFFF00" } } }; // Yellow color for nomequipment
+    worksheet.J1.s = { fill: { fgColor: { rgb: "FF0000" } } }; // Red color for id
+  
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Data');
+    XLSX.writeFile(workbook, 'donnees.xlsx');
+  };
+  
+  
+ 
+
+  
 
   return (
     <div>
@@ -73,9 +117,12 @@ export default function ListeEquipement({ data, setdata }) {
         </div>
          
         )}
-        <div className="icontelecharger">
-          <BiDownload className="telecharger" />
-        </div>
+       <div className="icontelecharger">
+  <BiDownload className="telecharger" onClick={fetchDataAndExportToExcel} />
+</div>
+
+
+
         
         <table>
           <thead>

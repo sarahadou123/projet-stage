@@ -15,7 +15,7 @@ function App() {
   const [dataadmine, setdataadmine]=useState([])
   const [dataUtilisateur , setDatautilisateur]=useState([])
   const [data,setdata]=useState([]);
-
+  const [activites, setActivites] = useState([]);
   const [idUtili,setidUtili]=useState("")
 
   useEffect( ()=>
@@ -52,12 +52,12 @@ function App() {
         <Routes>
           
           <Route path="/" exact element={<Login dataadmine={dataadmine}    dataUtilisateur={dataUtilisateur}  setDatautilisateur={setDatautilisateur} idUtili={idUtili} setidUtili={setidUtili}   />} />
-          <Route path="/Accueil" exact element={<Accueil/>} />
-          <Route path="/Profile"  element={<ProfileAdmin/>} />
+          <Route path="/Accueil" exact element={<Accueil  data={data}  dataUtilisateur={dataUtilisateur}  />} />
+          <Route path="/Profile"  element={<ProfileAdmin activites={activites} setActivites={setActivites}/>} />
           <Route path="/Equipement"  element={<ListeEquipement  data={data} setdata={setdata}/>} />
-          <Route path="/Emplacement" element={<EquipemntEpla data={data} setdata={setdata}/>} />
+          <Route path="/Emplacement" element={<EquipemntEpla activites={activites} setActivites={setActivites} data={data} setdata={setdata}/>} />
           <Route path="/Etulisateur" element={<Etulisateur />}  />
-          <Route path="/AjouterAdmin" element={<FormulaireContact/>}  />
+          <Route path="/AjouterAdmin" element={<FormulaireContact  dataadmine={dataadmine} setdataadmine={setdataadmine} />}  />
           <Route path="/profileUtili" element={<ProfileUtilisatuer idUtili={idUtili}      dataUtilisateur={dataUtilisateur} />}/>
          
           

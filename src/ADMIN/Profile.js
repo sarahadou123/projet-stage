@@ -1,7 +1,7 @@
 import React from 'react';
 import "../StyleCss/profiladmin.css";
 import { FaEnvelope,FaPhone,FaBuilding ,FaRegFileAlt,FaMapMarkerAlt} from 'react-icons/fa'
-function ProfileAdmin() {
+function ProfileAdmin({activites}) {
     return (
         <div>
             <div class='div1'>
@@ -55,21 +55,20 @@ function ProfileAdmin() {
                    </div>
             <hr/>
             <div className='divprofiladmin'>
-               <h1>activités</h1>
-               <hr/>
-               <div class='div1'>
-               <p className='pactivite'>***************************************************************** </p>
-               <span className='spanactivite'>23/02/2024 14:57 MA</span>
-               </div>
-               <div class='div1'>
-               <p className='pactivite'>*****************************************************************  </p>
-               <span className='spanactivite'>23/02/2024 14:57 MA</span>
-               </div>
+            <h2>Activités récentes</h2>
+      <ul>
+        {activites.map((activite, index) => (
+          <li key={index}>
+            {activite.action} - {activite.description} - {activite.date}
+          </li>
+        ))}
+      </ul>
+    </div>
                
             </div>
            
            
-        </div>
+       
     );
 }
 

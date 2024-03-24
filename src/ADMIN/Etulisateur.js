@@ -16,12 +16,15 @@ export default function Utilisateurs() {
   }, []);
 
   const supprimerUtilisateur = (id) => {
-    axios.delete(`http://localhost:2000/etulisateur/${id}`)
-      .then(response => {
-        // Si la suppression est réussie, mettre à jour l'état local
-        setdataetu(dataetu.filter(user => user.id !== id));
-      })
-      .catch(error => console.error("Error deleting user", error));
+    const confirmation = window.confirm("wach biti tmse7 bseh");
+    if (confirmation) {
+      axios.delete(`http://localhost:2000/etulisateur/${id}`)
+        .then(response => {
+          // If deletion is successful, update the local state
+          setdataetu(dataetu.filter(user => user.id !== id));
+        })
+        .catch(error => console.error("Error deleting user", error));
+    }
   };
 
   return (
