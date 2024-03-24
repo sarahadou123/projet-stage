@@ -7,22 +7,23 @@ import { useNavigate } from "react-router-dom";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import { AiOutlineMail } from "react-icons/ai";
-// <AiOutlineMail />
+
 
 
 export default function UseEffectLogin(props){
 
-  const {dataadmine , dataUtilisateur , setDatautilisateur ,idUtili ,setidUtili }=props
+  const {dataadmine , dataUtilisateur , setDatautilisateur ,idUtili ,setidUtili ,admineId,setadmineId }=props
   const [inscri,setinscri]=useState(false)
   const [loginUA , setloginUA ] =useState("")
   const [passwordUA , setpasswordUA ] =useState("")
 
-  const [Matricule , setMatricule]=useState()
+  const [matricule , setmatricule]=useState()
   const [nom, setNom]=useState()
   const [prenom, setprenom]=useState()
   const [login, setlogin]=useState()
   const [password, setpassword]=useState()
+  const [nbraffectation,setnbraffectation]=useState(0)
+
 
   const navigate=useNavigate()
 
@@ -31,13 +32,14 @@ export default function UseEffectLogin(props){
 
     const admineExist=dataadmine.find(element => element.login ==  loginUA && element.password == passwordUA  );
     const utiliExists=dataUtilisateur.find(element => element.login ==  loginUA && element.password == passwordUA  );
+
     if(admineExist){
-      navigate("/Accueil")
-      setidUtili(admineExist.id)
+      setadmineId(admineExist.id);
+      navigate("/Accueil");
     }
     else if(utiliExists){
-      navigate("/profileUtili")
-      setidUtili(utiliExists.id)
+      navigate(`/profileUtili/${utiliExists.id}`)
+      // setidUtili(utiliExists.id)
       
     }
     else{
@@ -50,10 +52,10 @@ export default function UseEffectLogin(props){
   function inscrire(e){
     e.preventDefault()
 
-    axios.post('http://localhost:2000/etulisateur', {Matricule,nom,prenom,login,password})
+    axios.post('http://localhost:2000/etulisateur', {matricule,nom,prenom,login,password,nbraffectation})
 
-    setDatautilisateur([...dataUtilisateur,{Matricule,nom,prenom,login,password}]);
-    setMatricule('');
+    setDatautilisateur([...dataUtilisateur,{matricule,nom,prenom,login,password ,nbraffectation}]);
+    setmatricule('');
     setNom("");
     setprenom("");
     setlogin("");
@@ -70,7 +72,7 @@ export default function UseEffectLogin(props){
           <p>Devenir un de nos Utilisateurs et S'inscrire  </p>
           <form>
             <div className="input1login">
-              <input type="text" placeholder="Matricule" value={Matricule} onChange={(e)=>setMatricule(e.target.value)} />
+              <input type="text" placeholder="matricule" value={matricule} onChange={(e)=>setmatricule(e.target.value)} />
             </div>
             <div className="input1login">
               <input type="text" placeholder="Nom" value={nom} onChange={(e)=>setNom(e.target.value)}  />

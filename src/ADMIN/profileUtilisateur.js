@@ -1,28 +1,162 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import  axios  from "axios";
 import {AiOutlineClose} from "react-icons/ai";
 import "../StyleCss/ProfileUtilisateur.css";
+import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function ProfileUtili(props){
-  const {idUtili , dataUtilisateur}=props
+  const {  dataUtilisateur , data, setdata , setDatautilisateur}=props
   const [affecterEquipement, setaffecterEquipement] = useState(false);
   const [existUA, setexistUA ]=useState()
   const navigate=useNavigate()
+  const {id}=useParams()
+  const [detailEmplacement, setdetailEmplacement] = useState(null);
+
+  const [selectedModel, setSelectedModel] = useState('');
+  const [customModel, setCustomModel] = useState('');
+  const [showCustomInput, setShowCustomInput] = useState(false);
+  const [model,setmodele]=useState("")
+
+  const [nameEquipement, setnameEquipement ]=useState("")
+  const [marqueE, setmarqueE ]=useState("")
+  const [Numsérie, setNumsérie ]=useState("")
+  const [CAB, setCAB ]=useState("")
+  const [NumMarche, setNumMarche ]=useState("")
+  const [matriculeUTilisateur, setmatriculeUTilisateur ]=useState("")
+  const [EmplacementCAB, setEmplacementCAB]=useState("")
+  const [SiteEplac, setSiteEplac ]=useState("")
+  const [CodeLocaleE, setCodeLocaleE ]=useState("")
+  const [LocalisationE, setLocalisationE ]=useState("")
+  const [ObservationE, setObservationE ]=useState("")
+  const [editProfile, seteditProfile ]=useState(false)
+
+  const [nomUtili, setnomUtili]=useState("")
+  const [prenomUtili, setprenomUtili]=useState("")
+  const [matriculeUtili, setmatriculeUtili]=useState("")
+  const [loginUtili, setloginUtili]=useState("")
+  const [passwordUtili, setpasswordUtili]=useState("")
+
+  const handleModelChange = (e) => {
+    const selectedValue = e.target.value;
+    setSelectedModel(selectedValue);
+    setShowCustomInput(selectedValue === 'custom');
+    if (selectedValue === 'custom') {
+      setCustomModel('');
+    }
+    setmodele(selectedValue)
+  };
+  const handleCustomModelChange = (e) => {
+        setCustomModel(e.target.value);
+        setmodele(e.target.value);
+      };
+    
+  const handleCustomClick = () => {
+      setSelectedModel('custom');
+      setShowCustomInput(true);
+  }; 
   
-  const utiliExists=dataUtilisateur.find(element => element.id == idUtili );
+  const utiliExists=dataUtilisateur.find(element => element.id == id );
+  const equipementsAffectes = data.filter(
+    (element) => element.affectationetulisateur === utiliExists.matricule
+  );
+  
 
   function logout(){
     navigate("/")
+  }
+  const handleEmplacementClick = (emplacementDetails) => {
+    setdetailEmplacement(emplacementDetails);
+  };
+
+
+
+  function AjoutEquipement(e){
+    // e.preventDefault()
+    const nouvelEquipement = {
+      nomequipment: nameEquipement,
+      marque: marqueE,
+      modele: model,
+      serie: Numsérie,
+      codebar: CAB,
+      emplacement: {
+          codebar: EmplacementCAB,
+          situe: SiteEplac,
+          codelocal: CodeLocaleE,
+          localisation: LocalisationE,
+          Observation: ObservationE
+      },
+      affectationetulisateur:matriculeUTilisateur,
+      numeromarche:NumMarche
+    };
+    const nbAfectUTILI={
+      nbraffectation:equipementsAffectes.length
+    }
+    axios.post('http://localhost:2000/etulisateur',nbAfectUTILI)
+    axios.post('http://localhost:2000/equipement',nouvelEquipement)
+    
+    setdata([...data,nouvelEquipement]);
+    setDatautilisateur([...dataUtilisateur,nouvelEquipement]);
+
+    setnameEquipement('');
+    setmarqueE("");
+    setNumsérie("");
+    setCAB("");
+    setNumMarche("");
+    setmatriculeUTilisateur("");
+    setEmplacementCAB("");
+    setSiteEplac("");
+    setCodeLocaleE("");
+    setLocalisationE("");
+    setObservationE("");
+    setSelectedModel("")
+    setCustomModel("")
+    setShowCustomInput(false)
+
+    toast.success("Equipement affecter avec success ", {
+      position: toast.POSITION.TOP_LEFT
+    })
+  }
+
+      
+
+  function EditeProfile(){
+      seteditProfile(true)
+      setnomUtili(utiliExists.nom);
+      setprenomUtili(utiliExists.prenom);
+      setmatriculeUtili(utiliExists.matricule);
+      setloginUtili(utiliExists.login);
+      setpasswordUtili(utiliExists.password);
+  }
+  function EditeProfileUtili(){
+    // e.preventDefault()
+  
+    if (utiliExists){
+      utiliExists.login = loginUtili;
+      utiliExists.password = passwordUtili;
+      utiliExists.nom = nomUtili;
+      utiliExists.prenom = prenomUtili;
+      utiliExists.matricule = matriculeUtili;
+    }
+    axios.put(`http://localhost:2000/etulisateur/${utiliExists.id}`, utiliExists)
+      .then(response => {
+        console.log('Data updated:', response.dataUtilisateur);
+        alert('Data updated successfully');
+      })
+      .catch(error => {console.error('Error updating data:', error);});
   }
 
   return(
     <div>
       <div className="headerProfilU">
+      <ToastContainer />
         <div>
           <p className="P1headerUt">Bonjour <span>{utiliExists.prenom}</span> </p>
-          <p className="P2headerUt">{utiliExists.nbraffectation}</p>
+          <p className="P2headerUt">{equipementsAffectes.length}</p>
         </div>
         <div className="butonoutP">
           <button className="BtnPROU">
@@ -34,52 +168,54 @@ export default function ProfileUtili(props){
       <div className="containerProfileU">
         <div className="headerCont"></div>
         <div className="header2Cont"> 
-          <img src="profilprojet.jpg" alt=""/>
+          <img src="/profilprojet.jpg" alt=""/>
         </div>
-        <button className="ptnediteProfile">Edite Profile</button>
+        <button className="ptnediteProfile" onClick={()=>EditeProfile()} >Edite Profile</button>
         <div className="divformation">
           <p className="p1"> <span>{utiliExists.nom}</span> {utiliExists.prenom}</p>
           <p className="p3">{utiliExists.matricule}</p>
-          <p className="p3"> Nbr equipement affecter :{utiliExists.nbraffectation} </p>
+          <p className="p3"> Nbr equipement affecter :{equipementsAffectes.length} </p>
           <div className="conAFF">
             <p className="mesE">Mes Equipements</p>
             <button className="btnAffecter" onClick={()=>setaffecterEquipement(true)}>Affecter un equipement</button>
             <div className="contAffecter">
-              <div className="Mequipement">
-                <div className="diE1">
-                  <p className="nomEquipe">Equipement: <span>PC</span></p> 
-                  <p className="nomEquipe">Marque: <span>dell</span></p>
+            {detailEmplacement && (
+                <div>
+                  <div className="divbalck">
                 </div>
-                <div className="diE2">
-                  <p className="nomEquipe">Modele: <span>2010</span></p>
-                  <p className="nomEquipe">N°série: <span>213</span></p>
+                <div className="divdetailEmplacementUTILI">
+                  <p><AiOutlineClose className="iconeannuler" onClick={() => setdetailEmplacement(null)} /></p>
+                  <p className="hjg">ste: {detailEmplacement.situe}</p>
+                  <p>Code Locale: {detailEmplacement.codelocal}</p>
+                  <p>Localisation: {detailEmplacement.localisation}</p>
+                  <p>Observation: {detailEmplacement.Observation}</p>
                 </div>
-                <div className="diE3">
-                  <p className="nomEquipe">CAB: <span>123E45</span></p>
-                  <p className="nomEquipe">Emplacement: <span>9808</span></p>
-                </div>
-                <div className="diE4">
-                  <p className="nomEquipe">N°marche: <span>12</span></p>
-                </div>
+              </div>
+              
+              )}
+              {equipementsAffectes && equipementsAffectes.map(element =>
+                      <div className="Mequipement">
+                      <div className="diE1">
+                        <p className="nomEquipe">Equipement: <span>{element.nomequipment}</span></p> 
+                        <p className="nomEquipe">Marque: <span>{element.marque}</span></p>
+                      </div>
+                      <div className="diE2">
+                        <p className="nomEquipe">Modele: <span>{element.modele}</span></p>
+                        <p className="nomEquipe">N°série: <span>{element.serie}</span></p>
+                      </div>
+                      <div className="diE3">
+                        <p className="nomEquipe">CAB: <span>{element.codebar}</span></p>
+                        <p className="nomEquipe">Emplacement: <Link onClick={()=> handleEmplacementClick(element.emplacement)}>{element.codebar}</Link></p>
+                      </div>
+                      <div className="diE4">
+                        <p className="nomEquipe">N°marche: <span>{element.numeromarche}</span></p>
+                      </div>
+                      
+                    </div>
                 
-              </div>
-              <div className="Mequipement">
-                <div className="diE1">
-                  <p className="nomEquipe">Equipement: <span>PC</span>  </p> 
-                  <p className="nomEquipe">Marque: <span>dell</span></p>
-                </div>
-                <div className="diE2">
-                  <p className="nomEquipe">Modele: <span>2010</span></p>
-                  <p className="nomEquipe">N°série: <span>213</span></p>
-                </div>
-                <div className="diE3">
-                  <p className="nomEquipe">CAB: <span>123E45</span></p>
-                  <p className="nomEquipe">Emplacement: <span>9808</span></p>
-                </div>
-                <div className="diE4">
-                  <p className="nomEquipe">N°marche: <span>12</span></p>
-                </div>
-              </div>
+              )}
+              
+             
               
              
             </div>
@@ -97,36 +233,77 @@ export default function ProfileUtili(props){
                                 <div className="contaifor">
                                         <div className="divINP1">
                                           <label>Equipement :</label>
-                                          <input type="text" name="aquipement" />
+                                          <input type="text" name="aquipement" value={nameEquipement} onChange={(e)=>setnameEquipement(e.target.value)}/>
                                         </div>
                                         <div className="divINP1">
                                           <label>Marque : </label>
-                                          <input type="text" name="marque" />
+                                          <input type="text" name="marque" value={marqueE} onChange={(e)=>setmarqueE(e.target.value)}/>
                                         </div>
                                         <div className="divINP1">
                                           <label>Modele :  </label>
-                                          <input type="text" name="Modele" />
+                                          {showCustomInput ?
+                                                  (
+                                                    <div>
+                                                      <input
+                                                        type="text"
+                                                        placeholder="Saisir Modele"
+                                                        value={customModel}
+                                                        onChange={handleCustomModelChange}
+                                                      />
+                                                      <AiOutlineClose className="iconeANULmodelPpRO" onClick={() => setShowCustomInput(false)} />
+                                                    </div>
+                                                  )
+                                                    :(
+                                                      <select id="pcModel" value={selectedModel} onChange={handleModelChange}>
+                                                        <option value="">Modele</option>
+                                                        {[...new Set(data.map(model => model.modele))].map((uniqueModel, index) => (
+                                                            <option key={index} value={uniqueModel}>{uniqueModel}</option>
+                                                        ))}
+                                                        <option value="custom">Saisir modele</option>
+                                                      </select>
+                                                  )
+                                          }
                                         </div>
                                         <div className="divINP1">
                                           <label>N°série :</label>
-                                          <input type="text" name="N°série" />
+                                          <input type="text" name="N°série" value={Numsérie} onChange={(e)=>setNumsérie(e.target.value)} />
                                         </div>
                                         <div className="divINP1">
                                           <label>CAB : </label>
-                                          <input type="text" name="CAB" />
+                                          <input type="text" name="CAB" value={CAB} onChange={(e)=>setCAB(e.target.value)}/>
                                         </div>
                                         <div className="divINP1">
-                                          <label>Affceter :</label>
-                                          <input type="text" name="affecter" />
+                                          <label>Emplacement CAB :</label>
+                                          <input type="text" name="affecter" value={EmplacementCAB} onChange={(e)=>setEmplacementCAB(e.target.value)} />
+                                        </div>
+                                        <div className="divINP1">
+                                          <label>site d'Emplacement:</label>
+                                          <input type="text" name="SiteEplac" value={SiteEplac} onChange={(e)=>setSiteEplac(e.target.value)}/>
+                                        </div>
+                                        <div className="divINP1">
+                                          <label>Code Locale d'Emplacement :</label>
+                                          <input type="text" name="CodeLocaleE" value={CodeLocaleE} onChange={(e)=>setCodeLocaleE(e.target.value)} />
+                                        </div>
+                                        <div className="divINP1">
+                                          <label>Localisation d'Emplacement :</label>
+                                          <input type="text" name="LocalisationE" value={LocalisationE} onChange={(e)=>setLocalisationE(e.target.value)} />
+                                        </div>
+                                        <div className="divINP1">
+                                          <label>observation d'Emplacement:</label>
+                                          <input type="text" name="ObservationE" value={ObservationE} onChange={(e)=>setObservationE(e.target.value)}/>
                                         </div>
                                         <div className="divINP1">
                                           <label>N°Marche :</label>
-                                          <input type="text" name="N°Marche" />
+                                          <input type="text" name="NumMarche" value={NumMarche} onChange={(e)=>setNumMarche(e.target.value)} />
+                                        </div>
+                                        <div className="divINP1">
+                                          <label>matricule UTilisateur :</label>
+                                          <input type="text" name="matriculeUtil" value={matriculeUTilisateur} onChange={(e)=>setmatriculeUTilisateur(e.target.value)} />
                                         </div>
 
                                 </div>
                                 <div className="btnLAffecter">
-                                  <input type="submit" value="affecter"/>
+                                  <input type="submit" value="affecter" onClick={(e)=>AjoutEquipement(e)} />
                                 </div>
                                     
                                      
@@ -135,6 +312,49 @@ export default function ProfileUtili(props){
                     
                   </>
                 )}
+
+            {editProfile && (
+                  <>
+                    <div className="divbalckkEditPro">
+                    </div>
+                        <div className="AffecterEqProfile">
+                        <p><AiOutlineClose className="iconeEannulerEdit" onClick={()=>seteditProfile(false)} /></p>
+                           <h2 className="h2ajEProfile">Editer votre profile </h2>
+                           <div className="minicontainer">
+                              <div >
+                                <div className="divINP1EDit">
+                                    <label>Nom :</label>
+                                    <input type="text" name="Nom" value={nomUtili} onChange={(e)=>setnomUtili(e.target.value)} />
+                                </div>
+                                <div className="divINP1EDit">
+                                    <label>Prenom :</label>
+                                    <input type="text" name="Prenom" value={prenomUtili} onChange={(e)=>setprenomUtili(e.target.value)} />
+                                </div>
+                                <div className="divINP1EDit">
+                                    <label>Matricule :</label>
+                                    <input type="text" name="Matricule" value={matriculeUtili} onChange={(e)=>setmatriculeUtili(e.target.value)} />
+                                </div>
+                                <div className="divINP1EDit">
+                                    <label>Login :</label>
+                                    <input type="text" name="Login" value={loginUtili} onChange={(e)=>setloginUtili(e.target.value)} />
+                                </div>
+                                <div className="divINP1EDit">
+                                    <label>Password :</label>
+                                    <input type="text" name="Password" value={passwordUtili} onChange={(e)=>setpasswordUtili(e.target.value)} />
+                                </div>
+                                
+                              </div>
+                              
+                              
+                              <div className="btnLEdite">
+                                  <input type="submit" value="affecter" onClick={()=>EditeProfileUtili()} />
+                                </div>
+                              
+                           </div>
+                          
+                         
+                         </div> 
+                    </>)}
     </div>
   )
 }

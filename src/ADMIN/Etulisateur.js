@@ -1,13 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineLogout } from "react-icons/ai";
+import { AiOutlineLogout ,AiOutlineSearch } from "react-icons/ai";
 import { BsFillPersonFill, BsFillPeopleFill, BsArrowLeftCircleFill, BsArchiveFill, BsBack, BsTrash3 } from "react-icons/bs";
 import Header from "./header";
 import axios from "axios";
 import "../StyleCss/Accueilstyle.css";
+import { useNavigate } from "react-router-dom";
+import { IoOpenOutline,IoPersonAddOutline } from "react-icons/io5";
 
-export default function Utilisateurs() {
+export default function Utilisateurs(props) {
   const [dataetu, setdataetu] = useState([]);
+  const {admineId }=props
+  const [showProfile, setShowProfile] = useState(false);
+  const navigate=useNavigate()
+  const [data1DMINE, setdata1DMINE ]=useState([])
+
+
+  
+
+  useEffect( ()=>
+  {
+    axios.get('http://localhost:2000/admin')
+    .then(reponse => setdata1DMINE(reponse.data))
+    .catch(error => console.error('error fetch :',error))
+  }
+ 
+  ,[])
+
+  const admineConn = data1DMINE.find(element => element.id == admineId)
+
+  function profile(){
+    navigate("/Profile")
+  }
 
   useEffect(() => {
     axios.get("http://localhost:2000/etulisateur")
@@ -71,7 +95,47 @@ export default function Utilisateurs() {
      
      
       </div>
-      <Header />
+      {/* <Header /> */}
+      <div className="divA">
+        <div className="topbar">
+          <div className="logoA">
+            <img src=" " alt="" />
+            <p>Gestion </p>
+            <h4>D'Equipements</h4>
+          </div>
+          <div className="searchdiv">
+            <AiOutlineSearch className="iconesearch" />
+            <input type="text" name="search" id="search" placeholder="Search" />
+                  
+                      <img className="imgprofile" src="profilprojet.jpg"  onClick={() => setShowProfile(true)}  />
+               
+          </div>
+
+          
+        </div>
+        <div>
+              {showProfile && (
+                              <div>
+                                  <div className="profile-container">
+                                    <div className="profile-picture">
+                                    <img src="profilprojet.jpg" alt="Photo de profil" />
+                                  </div>
+                                    <div className="profile-details">
+                                        <h3> {admineConn.nom}</h3>
+                                        <p>{admineConn.prenom}</p>
+                                        <p>afficher le compte <IoOpenOutline onClick={profile} /></p>
+                                        <button className="buutonprofil" onClick={() => setShowProfile(false)}>Fermer</button>  
+                                            
+                                    </div>
+
+                                </div>
+                                <div className="div77">
+                                  <p> <IoPersonAddOutline /><Link to="/AjouterAdmin">ajouter un autre compte</Link></p>
+                                </div>
+                              </div>
+                              )}
+            </div>
+        </div>
     <div className="contEmpl">
       <div className="tabHU">
         <p className="pTU">Listes des Utilisateurs </p>
