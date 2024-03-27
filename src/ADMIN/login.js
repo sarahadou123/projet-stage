@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function UseEffectLogin(props){
 
-  const {dataadmine , dataUtilisateur , setDatautilisateur ,admineId,setadmineId ,setutiliID}=props
+  const {dataadmine , dataUtilisateur , setDatautilisateur ,admineId,setadmineId ,setutiliID, setidAdmin,idAdmin,idUtili ,setidUtili }=props
   const [inscri,setinscri]=useState(false)
   const [loginUA , setloginUA ] =useState("")
   const [passwordUA , setpasswordUA ] =useState("")
@@ -35,6 +35,7 @@ export default function UseEffectLogin(props){
 
     if(admineExist){
       setadmineId(admineExist.id);
+      setidAdmin(admineExist.id)
       localStorage.setItem("myValue", admineExist.id);
       navigate("/Accueil");
     }

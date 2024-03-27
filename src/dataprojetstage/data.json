@@ -4,22 +4,22 @@
       "login": "admin1",
       "password": 123,
       "nom": "ait haddou",
-      "prenom": "sara",
-      "id": "7e29"
+      "prenom": "imane",
+      "id": "1"
     },
     {
       "login": "admin2",
       "password": 1234,
       "nom": "ait haddou",
       "prenom": "ahmed",
-      "id": "c4bb"
+      "id": "2"
     },
     {
       "login": "admin3",
       "password": 12345,
       "nom": "ait haddou",
       "prenom": "omaima",
-      "id": "9b80"
+      "id": "3"
     }
   ],
   "etulisateur": [
@@ -30,16 +30,7 @@
       "prenom": "fati",
       "nbraffectation": 50,
       "matricule": "y2356",
-      "id": "1ec2"
-    },
-    {
-      "login": "etu1",
-      "password": 12376,
-      "nom": "ait haddou",
-      "prenom": "fati",
-      "nbraffectation": 50,
-      "matricule": "y2356",
-      "id": "6"
+      "id": "0"
     },
     {
       "login": "etu1",
@@ -49,13 +40,280 @@
       "nbraffectation": 50,
       "matricule": "y2356",
       "id": "7"
+    },
+    {
+      "login": "etu1",
+      "password": 12376,
+      "nom": "ait haddou",
+      "prenom": "fati",
+      "nbraffectation": 50,
+      "matricule": "y2356",
+      "id": "8"
+    },
+    {
+      "login": "etu1",
+      "password": 12376,
+      "nom": "ait haddou",
+      "prenom": "fati",
+      "nbraffectation": 50,
+      "matricule": "y2356",
+      "id": "9"
+    },
+    {
+      "login": "etu1",
+      "password": 12376,
+      "nom": "ait haddou",
+      "prenom": "fati",
+      "nbraffectation": 50,
+      "matricule": "y2356",
+      "id": "10"
+    },
+    {
+      "login": "etu1",
+      "password": 12376,
+      "nom": "ait haddou",
+      "prenom": "fati",
+      "nbraffectation": 50,
+      "matricule": "y2356",
+      "id": "11"
+    },
+    {
+      "login": "etu1",
+      "password": 12376,
+      "nom": "ait haddou",
+      "prenom": "fati",
+      "nbraffectation": 50,
+      "matricule": "y2356",
+      "id": "12"
+    },
+    {
+      "login": "etu1",
+      "password": 12376,
+      "nom": "ait haddou",
+      "prenom": "fati",
+      "nbraffectation": 50,
+      "matricule": "y2356",
+      "id": "13"
+    },
+    {
+      "id": "2",
+      "matricule": "EE123",
+      "nom": "chaaoula",
+      "prenom": "imane",
+      "login": "imane",
+      "password": "2002",
+      "nbraffectation": 6
     }
   ],
   "equipement": [
     {
       "nomequipment": "pc",
       "marque": "hp",
-      "modele": "model1",
+      "modele": "model4",
+      "serie": "seri1",
+      "codebar": 50000,
+      "emplacement": {
+        "codebar": 500000,
+        "situe": "bireau",
+        "codelocal": 2682132,
+        "localisation": "bireau",
+        "Observation": "uyvftsj"
+      },
+      "affectationetulisateur": "EE123",
+      "numeromarche": 3453259,
+      "id": "123"
+    },
+    {
+      "nomequipment": "pc",
+      "marque": "hp",
+      "modele": "model5",
+      "serie": "seri1",
+      "codebar": 50000,
+      "emplacement": {
+        "codebar": 500000,
+        "situe": "bireau",
+        "codelocal": 2682132,
+        "localisation": "bireau",
+        "Observation": "uyvftsj"
+      },
+      "affectationetulisateur": "y2356",
+      "numeromarche": 3453259,
+      "id": "123"
+    },
+    {
+      "nomequipment": "pc",
+      "marque": "hp",
+      "modele": "model6",
+      "serie": "seri1",
+      "codebar": 50000,
+      "emplacement": {
+        "codebar": 500000,
+        "situe": "bireau",
+        "codelocal": 2682132,
+        "localisation": "bireau",
+        "Observation": "uyvftsj"
+      },
+      "affectationetulisateur": "y2356",
+      "numeromarche": 3453259,
+      "id": "123"
+    },
+    {
+      "nomequipment": "pc",
+      "marque": "hp",
+      "modele": "model6",
+      "serie": "seri1",
+      "codebar": 50000,
+      "emplacement": {
+        "codebar": 500000,
+        "situe": "bireau",
+        "codelocal": 2682132,
+        "localisation": "bireau",
+        "Observation": "uyvftsj"
+      },
+      "affectationetulisateur": "EE45678",
+      "numeromarche": 3453259,
+      "id": "123"
+    },
+    {
+      "id": "359e",
+      "nomequipment": "serie",
+      "marque": "dell",
+      "modele": "model6",
+      "serie": "213",
+      "codebar": "2003",
+      "emplacement": {
+        "codebar": "EE4321",
+        "situe": "ddddddddd",
+        "codelocal": "D\"'g",
+        "localisation": "bireu Chaaoula",
+        "Observation": "cette equipement affecter imene"
+      },
+      "affectationetulisateur": "67HJVH",
+      "numeromarche": "9008"
+    },
+    {
+      "id": "64e5",
+      "nomequipment": "clavier",
+      "marque": "lenovo",
+      "modele": "core i3 model 2010",
+      "serie": "789",
+      "codebar": "TGJ79U9",
+      "emplacement": {
+        "codebar": "567Evbn ",
+        "situe": "dddddddd",
+        "codelocal": "ccccccc1212",
+        "localisation": "bireau chaaoulaMARWA",
+        "Observation": "affecter lutilisateur marwa"
+      },
+      "affectationetulisateur": "234E54",
+      "numeromarche": "20015"
+    },
+    {
+      "id": "64e5",
+      "nomequipment": "clavier",
+      "marque": "lenovo",
+      "modele": "core i3 model 2010",
+      "serie": "789",
+      "codebar": "TGJ79U9",
+      "emplacement": {
+        "codebar": "567Evbn ",
+        "situe": "dddddddd",
+        "codelocal": "ccccccc1212",
+        "localisation": "bireau chaaoulaMARWA",
+        "Observation": "affecter lutilisateur marwa"
+      },
+      "affectationetulisateur": "EE123",
+      "numeromarche": "20015"
+    },
+    {
+      "id": "64e5",
+      "nomequipment": "clavier",
+      "marque": "lenovo",
+      "modele": "core i3 model 2010",
+      "serie": "789",
+      "codebar": "TGJ79U9",
+      "emplacement": {
+        "codebar": "567Evbn ",
+        "situe": "dddddddd",
+        "codelocal": "ccccccc1212",
+        "localisation": "bireau chaaoulaMARWA",
+        "Observation": "affecter lutilisateur marwa"
+      },
+      "affectationetulisateur": "234E54",
+      "numeromarche": "20015"
+    },
+    {
+      "id": "64e5",
+      "nomequipment": "clavier",
+      "marque": "lenovo",
+      "modele": "core i3 model 2010",
+      "serie": "789",
+      "codebar": "TGJ79U9",
+      "emplacement": {
+        "codebar": "567Evbn ",
+        "situe": "dddddddd",
+        "codelocal": "ccccccc1212",
+        "localisation": "bireau chaaoulaMARWA",
+        "Observation": "affecter lutilisateur marwa"
+      },
+      "affectationetulisateur": "EE123",
+      "numeromarche": "20015"
+    },
+    {
+      "id": "64e5",
+      "nomequipment": "clavier",
+      "marque": "lenovo",
+      "modele": "core i3 model 2010",
+      "serie": "789",
+      "codebar": "TGJ79U9",
+      "emplacement": {
+        "codebar": "567Evbn ",
+        "situe": "dddddddd",
+        "codelocal": "ccccccc1212",
+        "localisation": "bireau chaaoulaMARWA",
+        "Observation": "affecter lutilisateur marwa"
+      },
+      "affectationetulisateur": "234E54",
+      "numeromarche": "20015"
+    },
+    {
+      "id": "64e5",
+      "nomequipment": "clavier",
+      "marque": "lenovo",
+      "modele": "core i3 model 2010",
+      "serie": "789",
+      "codebar": "TGJ79U9",
+      "emplacement": {
+        "codebar": "567Evbn ",
+        "situe": "dddddddd",
+        "codelocal": "ccccccc1212",
+        "localisation": "bireau chaaoulaMARWA",
+        "Observation": "affecter lutilisateur marwa"
+      },
+      "affectationetulisateur": "234E54",
+      "numeromarche": "20015"
+    },
+    {
+      "id": "64e5",
+      "nomequipment": "clavier",
+      "marque": "lenovo",
+      "modele": "core i3 model 2010",
+      "serie": "789",
+      "codebar": "TGJ79U9",
+      "emplacement": {
+        "codebar": "567Evbn ",
+        "situe": "dddddddd",
+        "codelocal": "ccccccc1212",
+        "localisation": "bireau chaaoulaMARWA",
+        "Observation": "affecter lutilisateur marwa"
+      },
+      "affectationetulisateur": "234E54",
+      "numeromarche": "20015"
+    },
+    {
+      "nomequipment": "pc",
+      "marque": "hp",
+      "modele": "model6",
       "serie": "seri1",
       "codebar": 50000,
       "emplacement": {
@@ -72,7 +330,7 @@
     {
       "nomequipment": "pc",
       "marque": "hp",
-      "modele": "model1",
+      "modele": "model6",
       "serie": "seri1",
       "codebar": 50000,
       "emplacement": {
@@ -84,7 +342,92 @@
       },
       "affectationetulisateur": "y547",
       "numeromarche": 3453259,
-      "id": "560"
+      "id": "123"
+    },
+    {
+      "nomequipment": "pc",
+      "marque": "hp",
+      "modele": "model6",
+      "serie": "seri1",
+      "codebar": 50000,
+      "emplacement": {
+        "codebar": 500000,
+        "situe": "bireau",
+        "codelocal": 2682132,
+        "localisation": "bireau",
+        "Observation": "uyvftsj"
+      },
+      "affectationetulisateur": "y547",
+      "numeromarche": 3453259,
+      "id": "123"
+    },
+    {
+      "id": "475e",
+      "nomequipment": "CLAVIER",
+      "marque": "IPHONE",
+      "modele": "2012",
+      "serie": "345",
+      "codebar": "1212",
+      "emplacement": {
+        "codebar": "SDFSF",
+        "situe": "ERGFERGERG",
+        "codelocal": "ZRFZER",
+        "localisation": "ZERZERZER",
+        "Observation": "ZERZER"
+      },
+      "affectationetulisateur": "AZEAEZER",
+      "numeromarche": "ZERAZER"
+    },
+    {
+      "id": "ff2c",
+      "nomequipment": "MARWA",
+      "marque": "DDD",
+      "modele": "model5",
+      "serie": "8",
+      "codebar": "2134",
+      "emplacement": {
+        "codebar": "CHAAOULA",
+        "situe": "123RDC4",
+        "codelocal": "123RDC4",
+        "localisation": "123RDC4",
+        "Observation": "uuuuuu"
+      },
+      "affectationetulisateur": "hgb234",
+      "numeromarche": "bvbvbv"
+    },
+    {
+      "id": "bd27",
+      "nomequipment": "MARWA",
+      "marque": "DELL",
+      "modele": "model6",
+      "serie": "8",
+      "codebar": "234",
+      "emplacement": {
+        "codebar": "edzed",
+        "situe": "azazz",
+        "codelocal": "560",
+        "localisation": "bireauch",
+        "Observation": "dad"
+      },
+      "affectationetulisateur": "a941",
+      "numeromarche": "dczed"
+    },
+    {
+      "id": "d1dc",
+      "nomequipment": "MARWA",
+      "marque": "efzefzefz",
+      "modele": "",
+      "serie": "sdfsdf",
+      "codebar": "sdsdf",
+      "emplacement": {
+        "codebar": "fzf",
+        "situe": "zefz",
+        "codelocal": "zefzee",
+        "localisation": "efze",
+        "Observation": "zef"
+      },
+      "affectationetulisateur": "EE123",
+      "numeromarche": "zef"
     }
   ]
 }

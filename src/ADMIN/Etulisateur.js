@@ -8,13 +8,14 @@ import "../StyleCss/Accueilstyle.css";
 import { useNavigate } from "react-router-dom";
 import { IoOpenOutline,IoPersonAddOutline } from "react-icons/io5"; 
 
+
 export default function Utilisateurs(props) {
   const [dataetu, setdataetu] = useState([]);
-  const {admineId ,dataUtilisateur}=props
+  const {admineId ,dataUtilisateur ,setActivitesetu, activitesetu}=props
   const [showProfile, setShowProfile] = useState(false);
   const navigate=useNavigate()
   const [data1DMINE, setdata1DMINE ]=useState([])
-
+  const [archiveSuppression, setArchiveSuppression] = useState([]);
   const [search,setsearch]=useState("")
   const [datasearch,setdatasearch]=useState([])
   const [vide,setvide]=useState("")
@@ -22,7 +23,11 @@ export default function Utilisateurs(props) {
 
   function searcher(e){
     e.preventDefault()
-    setdatasearch(dataUtilisateur.filter(element => element.matricule.toUpperCase() === search.trim().toUpperCase() || element.nom.trim().toUpperCase().startsWith(search.trim().toUpperCase() )  || element.prenom.trim().toUpperCase().startsWith(search.trim().toUpperCase() ) ))
+    setdatasearch(dataUtilisateur.filter(element => 
+      element.matricule?.toUpperCase() === search.trim().toUpperCase() ||
+      element.nom?.trim().toUpperCase().startsWith(search.trim().toUpperCase()) ||
+      element.prenom?.trim().toUpperCase().startsWith(search.trim().toUpperCase())
+    ))
     setvide(search)
   }
   
@@ -48,14 +53,57 @@ export default function Utilisateurs(props) {
       .catch(error => console.error("Error fetching data", error));
   }, []);
 
-  const supprimerUtilisateur = (id) => {
-    axios.delete(`http://localhost:2000/etulisateur/${id}`)
-      .then(response => {
-        // Si la suppression est réussie, mettre à jour l'état local
-        setdataetu(dataetu.filter(user => user.id !== id));
-      })
-      .catch(error => console.error("Error deleting user", error));
+  useEffect(() => {
+    const storedActivities = JSON.parse(localStorage.getItem('activities'));
+    const storedArchive = JSON.parse(localStorage.getItem('archiveSuppression'));
+
+    if (storedActivities) {
+      setActivitesetu(storedActivities);
+    }
+    if (storedArchive) {
+      setArchiveSuppression(storedArchive);
+    }
+  }, []);
+
+  const ajouterActivite = (action, description) => {
+    const nouvelleActivite = {
+      action: action,
+      description: description,
+      date: new Date().toLocaleString(),
+    };
+    const updatedActivities = [...activitesetu, nouvelleActivite];
+    setActivitesetu(updatedActivities);
+    localStorage.setItem('activities', JSON.stringify(updatedActivities));
+  
+    // Ajouter à l'archive de suppression
+    const updatedArchive = [...archiveSuppression, nouvelleActivite];
+    setArchiveSuppression(updatedArchive); // Mettre à jour l'état local
+    localStorage.setItem('archiveSuppression', JSON.stringify(updatedArchive)); // Stocker dans le localStorage
   };
+  
+
+
+
+
+  const supprimerUtilisateur = (id) => {
+    const confirmation = window.confirm("Voulez-vous vraiment supprimer cet utilisateur ?");
+    if (confirmation) {
+      axios.delete(`http://localhost:2000/etulisateur/${id}`)
+        .then(response => {
+          setdataetu(dataetu.filter(user => user.id !== id));
+          const nouvelleActivite = {
+            action: "Suppression",
+            description: "Suppression d'un utilisateur",
+            date: new Date().toLocaleString(),
+          };
+          ajouterActivite("Suppression", "Suppression d'un utilisateur");
+          setArchiveSuppression([...archiveSuppression, nouvelleActivite]);
+        })
+        .catch(error => console.error("Erreur lors de la suppression de l'utilisateur", error));
+    }
+  };
+  
+
 
   return (
    
@@ -95,7 +143,7 @@ export default function Utilisateurs(props) {
           </li>
          
           <li className="LOGOUT">
-            <Link to="/logout" className="AlinkD">
+            <Link to="/" className="AlinkD">
               <AiOutlineLogout className="iconeDashbord" />
               <span>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;Logout </span>
             </Link>
@@ -160,7 +208,7 @@ export default function Utilisateurs(props) {
             </tr>
           </thead>
           <tbody>
-            {datasearch.length >0 ? 
+          {datasearch.length >0 ? 
                 datasearch.map((etu, index) => (
                   <tr key={index}>
                     <td>{etu.matricule}</td>
@@ -184,10 +232,12 @@ export default function Utilisateurs(props) {
                 <td>{etu.nbraffectation}</td>
                 <td><button onClick={() => supprimerUtilisateur(etu.id)} className="btnsuppe"><BsTrash3 /></button></td>
               </tr>
-            ))}
+            ))
+            }
           </tbody>
         </table>
       </div>
+
     </div>
     </div>
   );

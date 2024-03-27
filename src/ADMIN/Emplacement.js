@@ -22,6 +22,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function EquipemntEpla(props) {
+  const { data,idAdmin, dataadmine, setdata, activitesequip,admineId , setactivitesequip}=props
   const [selectedModel, setSelectedModel] = useState('');
   const [customModel, setCustomModel] = useState('');
   const [showCustomInput, setShowCustomInput] = useState(false);
@@ -38,13 +39,89 @@ export default function EquipemntEpla(props) {
   const [LocalisationE, setLocalisationE ]=useState("")
   const [ObservationE, setObservationE ]=useState("")
   const [model,setmodele]=useState("")
+  
 
   ///header
     const [idmodiff, setidmodiff]=useState()
-    const {admineId ,data , setdata}=props
     const [showProfile, setShowProfile] = useState(false);
     const navigate=useNavigate()
     const [data1DMINE, setdata1DMINE ]=useState([])
+
+ 
+  // const [selectedModel, setSelectedModel] = useState("");
+  const [archiveSuppression, setArchiveSuppression] = useState([]);
+ 
+
+  useEffect(() => {
+    const storedActivities = JSON.parse(localStorage.getItem('activities'));
+    const storedArchive = JSON.parse(localStorage.getItem('archiveSuppression'));
+
+    if (storedActivities) {
+      setactivitesequip(storedActivities);
+    }
+    if (storedArchive) {
+      setArchiveSuppression(storedArchive);
+    }
+  }, []);
+
+
+  const ajouterActivite = (action, description) => {
+    const admineAafficher = dataadmine.find(admin => admin.id === idAdmin);
+    const nouvelleActivite = {
+        action: action,
+        description: description,
+        date: new Date().toLocaleString(),
+        nomAdmin: admineAafficher ? admineAafficher.nom : "vide",
+        prenomAdmin: admineAafficher ? admineAafficher.prenom : "vide",
+    };
+    
+    const updatedActivities = [...activitesequip, nouvelleActivite];
+    setactivitesequip(updatedActivities);
+    localStorage.setItem('activities', JSON.stringify(updatedActivities));
+  
+    // Ajouter à l'archive de suppression
+    const updatedArchive = [...archiveSuppression, nouvelleActivite];
+    setArchiveSuppression(updatedArchive); // Mettre à jour l'état local
+    localStorage.setItem('archiveSuppression', JSON.stringify(updatedArchive)); // Stocker dans le localStorage
+};
+const admin = dataadmine.find(admin => admin.id === idAdmin);
+console.log("admin:", admin); // Vérifiez les informations de l'administrateur dans la console
+const nomAdmin = admin ? admin.nom : "Nom non disponible";
+const prenomAdmin = admin ? admin.prenom : "Prénom non disponible";
+console.log("nomAdmin:", nomAdmin); // Vérifiez le nom de l'administrateur dans la console
+console.log("prenomAdmin:", prenomAdmin); 
+
+ //----------------------------------------------SUPPRESSION---------------------------------------------------------------------------------
+
+
+  
+ const supprimerUtilisateur = (id) => {
+  const confirmation = window.confirm("Voulez-vous vraiment supprimer cet equipement ?");
+  if (confirmation) {
+    axios.delete(`http://localhost:2000/equipement/${id}`)
+      .then(response => {
+        setdata(data.filter(user => user.id !== id));
+        const nouvelleActivite = {
+        
+          action: "Suppression",
+          description: "Suppression d'un utilisateur",
+          date: new Date().toLocaleString(),
+        };
+        ajouterActivite("Suppression", "Suppression d'un equipement");
+        setArchiveSuppression([...archiveSuppression, nouvelleActivite]);
+      })
+      .catch(error => console.error("Erreur lors de la suppression de l'utilisateur", error));
+  }
+};
+  
+ 
+ 
+
+
+
+
+ //-------------------------------------------------------------------------------------------------------------------------------
+
 
     const [search,setsearch]=useState("")
     const [datasearch,setdatasearch]=useState([])
@@ -95,7 +172,8 @@ export default function EquipemntEpla(props) {
       setShowCustomInput(true);
   }; 
   
- 
+ //--------------------------------------------------------------AJOUTER-----------------------------------------------------------------
+
   
 
   useEffect(() => {
@@ -123,6 +201,8 @@ export default function EquipemntEpla(props) {
       affectationetulisateur:matriculeUTilisateur,
       numeromarche:NumMarche
     };
+    ajouterActivite("Ajouter", "Ajoute d'un équipement");
+
     axios.post('http://localhost:2000/equipement',nouvelEquipement)
 
     setdata([...data,nouvelEquipement]);
@@ -144,14 +224,7 @@ export default function EquipemntEpla(props) {
     // console.log(model)
   }
 
-  const supprimerUtilisateur = (id) => {
-    axios.delete(`http://localhost:2000/equipement/${id}`)
-      .then(response => {
-        // Si la suppression est réussie, mettre à jour l'état local
-        setdata(data.filter(user => user.id !== id));
-      })
-      .catch(error => console.error("Error deleting user", error));
-  };
+//---------------------------------------------------------SUPPRIMER----------------------------------------------------------------------
 
   function modifierEquipe(id ){
     const EquipemetModif=data.find(element => element.id==id  );
@@ -199,11 +272,13 @@ export default function EquipemntEpla(props) {
       existE.affectationetulisateur=matriculeUTilisateur ;
       existE.numeromarche=NumMarche ;
    }
-     
+  
+ 
    axios.put(`http://localhost:2000/equipement/${existE.id}`, existE)
    .then(response => {
                       console.log('Data updated:', response.data);
                       alert('Data updated successfully');
+                      ajouterActivite("Modification", "Modification d'un équipement");
                     })
    .catch(error => {console.error('Error updating data:', error);});
   }
@@ -444,6 +519,7 @@ export default function EquipemntEpla(props) {
         
         </div>  
     </div>
+    
             
   
   );
