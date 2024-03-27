@@ -13,6 +13,7 @@ function ProfileAdmin({idAdmin,dataadmine}) {
   const nomAdmin = admin ? admin.nom : "Nom non disponible";
   const prenomAdmin = admin ? admin.prenom : "Prénom non disponible";
   
+
   return (
     <div>
       <div class='div1'>
@@ -71,7 +72,7 @@ function ProfileAdmin({idAdmin,dataadmine}) {
         <div>
 
           <ul>
-          {archiveSuppression.map((activite, index) => (
+            {archiveSuppression.map((activite, index) => (
               <li key={index}>{activite.date} - {activite.description} par {activite.nomAdmin} {activite.prenomAdmin}
               </li>
             ))}
