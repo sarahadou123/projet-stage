@@ -19,7 +19,7 @@ import { useEffect } from "react";
 
 
 
-export default function EquipemntEpla({data , setdata,activites, setActivites}) {
+export default function EquipemntEpla({data,idAdmin, dataadmine, setdata,activitesequip, setactivitesequip}) {
   const [selectedModel, setSelectedModel] = useState('');
   const [customModel, setCustomModel] = useState('');
   const [showCustomInput, setShowCustomInput] = useState(false);
@@ -40,21 +40,78 @@ export default function EquipemntEpla({data , setdata,activites, setActivites}) 
   const [idmodiff, setidmodiff]=useState()
  
   // const [selectedModel, setSelectedModel] = useState("");
-  
-
+  const [archiveSuppression, setArchiveSuppression] = useState([]);
  
+
+  useEffect(() => {
+    const storedActivities = JSON.parse(localStorage.getItem('activities'));
+    const storedArchive = JSON.parse(localStorage.getItem('archiveSuppression'));
+
+    if (storedActivities) {
+      setactivitesequip(storedActivities);
+    }
+    if (storedArchive) {
+      setArchiveSuppression(storedArchive);
+    }
+  }, []);
+
+
   const ajouterActivite = (action, description) => {
+    const admineAafficher = dataadmine.find(admin => admin.id === idAdmin);
     const nouvelleActivite = {
-      action: action,
-      description: description,
-      date: new Date().toLocaleString(),
+        action: action,
+        description: description,
+        date: new Date().toLocaleString(),
+        nomAdmin: admineAafficher ? admineAafficher.nom : "vide",
+        prenomAdmin: admineAafficher ? admineAafficher.prenom : "vide",
     };
-    setActivites([...activites, nouvelleActivite]);
-  };
+    
+    const updatedActivities = [...activitesequip, nouvelleActivite];
+    setactivitesequip(updatedActivities);
+    localStorage.setItem('activities', JSON.stringify(updatedActivities));
+  
+    // Ajouter à l'archive de suppression
+    const updatedArchive = [...archiveSuppression, nouvelleActivite];
+    setArchiveSuppression(updatedArchive); // Mettre à jour l'état local
+    localStorage.setItem('archiveSuppression', JSON.stringify(updatedArchive)); // Stocker dans le localStorage
+};
+const admin = dataadmine.find(admin => admin.id === idAdmin);
+console.log("admin:", admin); // Vérifiez les informations de l'administrateur dans la console
+const nomAdmin = admin ? admin.nom : "Nom non disponible";
+const prenomAdmin = admin ? admin.prenom : "Prénom non disponible";
+console.log("nomAdmin:", nomAdmin); // Vérifiez le nom de l'administrateur dans la console
+console.log("prenomAdmin:", prenomAdmin); 
+
+ //----------------------------------------------SUPPRESSION---------------------------------------------------------------------------------
+
+
+  
+ const supprimerUtilisateur = (id) => {
+  const confirmation = window.confirm("Voulez-vous vraiment supprimer cet equipement ?");
+  if (confirmation) {
+    axios.delete(`http://localhost:2000/equipement/${id}`)
+      .then(response => {
+        setdata(data.filter(user => user.id !== id));
+        const nouvelleActivite = {
+        
+          action: "Suppression",
+          description: "Suppression d'un utilisateur",
+          date: new Date().toLocaleString(),
+        };
+        ajouterActivite("Suppression", "Suppression d'un equipement");
+        setArchiveSuppression([...archiveSuppression, nouvelleActivite]);
+      })
+      .catch(error => console.error("Erreur lors de la suppression de l'utilisateur", error));
+  }
+};
+  
+ 
+ 
 
 
 
 
+ //-------------------------------------------------------------------------------------------------------------------------------
 
 
   const handleModelChange = (e) => {
@@ -76,7 +133,8 @@ export default function EquipemntEpla({data , setdata,activites, setActivites}) 
       setShowCustomInput(true);
   }; 
   
- 
+ //--------------------------------------------------------------AJOUTER-----------------------------------------------------------------
+
   
 
   useEffect(() => {
@@ -104,7 +162,7 @@ export default function EquipemntEpla({data , setdata,activites, setActivites}) 
       affectationetulisateur:matriculeUTilisateur,
       numeromarche:NumMarche
     };
-    ajouterActivite("Ajout", "Ajout d'un équipement");
+    ajouterActivite("Ajouter", "Ajoute d'un équipement");
 
     axios.post('http://localhost:2000/equipement',nouvelEquipement)
 
@@ -127,24 +185,7 @@ export default function EquipemntEpla({data , setdata,activites, setActivites}) 
     // console.log(model)
   }
 
-// Fonction pour supprimer un équipement
-const supprimerUtilisateur = (id) => {
-  // Logique pour supprimer un équipement
-  const confirmation = window.confirm("Voulez-vous vraiment supprimer cet équipement ?");
-  if (confirmation) {
-    axios.delete(`http://localhost:2000/equipement/${id}`)
-      .then(response => {
-        // Si la suppression réussit, mettre à jour les données d'équipement et les activités
-        setdata(data.filter(equipement => equipement.id !== id)); // Filtrer pour supprimer l'équipement supprimé
-        ajouterActivite("Suppression", "Suppression d'un équipement"); // Ajouter une activité pour la suppression
-      })
-      .catch(error => console.error("Erreur lors de la suppression de l'équipement", error));
-  }
-
-
-   
-
-  };
+//---------------------------------------------------------SUPPRIMER----------------------------------------------------------------------
 
   function modifierEquipe(id ){
     const EquipemetModif=data.find(element => element.id==id  );
@@ -192,12 +233,13 @@ const supprimerUtilisateur = (id) => {
     existE.affectationetulisateur=matriculeUTilisateur ;
     existE.numeromarche=NumMarche ;
    }
-   ajouterActivite("Modification", "Modification d'un équipement");
+  
  
    axios.put(`http://localhost:2000/equipement/${existE.id}`, existE)
    .then(response => {
                       console.log('Data updated:', response.data);
                       alert('Data updated successfully');
+                      ajouterActivite("Modification", "Modification d'un équipement");
                     })
    .catch(error => {console.error('Error updating data:', error);});
   }
@@ -372,6 +414,7 @@ const supprimerUtilisateur = (id) => {
         
         </div>  
     </div>
+    
             
   
   );

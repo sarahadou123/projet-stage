@@ -14,8 +14,11 @@ export default function Accueil({data, dataUtilisateur,dataempalacemet}) {
   const [lastEquipements, setLastEquipements] = useState([]);
   const  nbrequipement=data.length
 
-  const utilisateursAffectes = dataUtilisateur.filter(user => user.hasOwnProperty("nbraffectation"));
-  const nombreTotalAffectations = utilisateursAffectes.length; 
+  const affectationsNonNulles = data.filter(item => item.affectationetulisateur !== null && item.affectationetulisateur !== "");
+
+  // Calculer le nombre total d'affectations
+  const nombreTotalAffectations = affectationsNonNulles.length;
+  ; 
   const empl=data.length
   useEffect(() => {
     const fetchLastEquipements = async () => {
@@ -111,7 +114,7 @@ export default function Accueil({data, dataUtilisateur,dataempalacemet}) {
   <table>
     <thead>
       <tr>
-        <th>Date</th>
+       
         <th>Equipement</th>
         <th>Marque</th>
         <th>Modele</th>
@@ -129,7 +132,7 @@ export default function Accueil({data, dataUtilisateur,dataempalacemet}) {
     .reverse()
     .map((affectation, index) => (
       <tr key={index}>
-        <td>{affectation.date}</td>
+        
         <td>{affectation.nomequipment}</td>
         <td>{affectation.marque}</td>
         <td>{affectation.modele}</td>
