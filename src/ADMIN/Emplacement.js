@@ -46,6 +46,17 @@ export default function EquipemntEpla(props) {
     const navigate=useNavigate()
     const [data1DMINE, setdata1DMINE ]=useState([])
 
+    const [search,setsearch]=useState("")
+    const [datasearch,setdatasearch]=useState([])
+    const [vide,setvide]=useState("")
+  
+
+    function searcher(e){
+      e.preventDefault()
+      setdatasearch(data.filter(element => element.codebar === search.trim().toUpperCase() || element.nomequipment.toUpperCase() ===search.trim().toUpperCase() || element.marque.toUpperCase() ===search.trim().toUpperCase() || element.affectationetulisateur.toUpperCase() ===search.trim().toUpperCase() || element.nomequipment.toUpperCase() ===search.trim().toUpperCase() || element.marque.toUpperCase() ===search.trim().toUpperCase() || element.affectationetulisateur.toUpperCase() ===search.trim().toUpperCase() || element.numeromarche ===search.trim().toUpperCase() ))
+      setvide(search)
+    }
+
 
     
 
@@ -253,10 +264,11 @@ export default function EquipemntEpla(props) {
             <h4>D'Equipements</h4>
           </div>
           <div className="searchdiv">
-            <AiOutlineSearch className="iconesearch" />
-            <input type="text" name="search" id="search" placeholder="Search" />
-                  
-                      <img className="imgprofile" src="profilprojet.jpg"  onClick={() => setShowProfile(true)}  />
+            <form onSubmit={(e)=>searcher(e)}>
+              <button className="iconesearch"   type="submit"><AiOutlineSearch  /></button>
+              <input  type="text" name="search" id="search" placeholder="Search" value={search} onChange={(e)=>setsearch(e.target.value)} />
+            </form>
+            <img className="imgprofile" src="profilprojet.jpg"  onClick={() => setShowProfile(true)}  />
                
           </div>
 
@@ -370,7 +382,32 @@ export default function EquipemntEpla(props) {
             
             
            
-              {data.map((elemnt)=>
+              {datasearch.length >0 ? 
+                datasearch.map((element, index) => (
+                  <tr key={index}>
+                    <td>{element.nomequipment}</td>
+                    <td>{element.marque}</td>
+                    <td>{element.modele}</td>
+                    <td>{element.serie}</td>
+                    <td>{element.codebar}</td>
+                    <td>{element.emplacement ? element.emplacement.codebar : ''}</td>
+                    <td>{element.affectationetulisateur}</td>
+                    <td>{element.numeromarche}</td>
+                    <td>
+                      <button  className="btnsuppe"  onClick={() => supprimerUtilisateur(element.id)}  ><BsTrash3 className="large-delete-icon" style={{ cursor: 'pointer', marginLeft: '15px' }} /></button>
+                    </td>
+                    <td>
+                      <button  className="modifier" onClick={()=>modifierEquipe(element.id) } ><BsPencilSquare style={{color:"white",fontSize:"20px"}} /></button>
+                    </td>
+                  </tr>
+                ))
+                :
+                datasearch == 0 && vide !==""  ?(
+                  <tr>
+                    <td colSpan={8}> Aucun equipement avec ce CAB ({search})</td>
+                  </tr>
+                )
+              :data.map((elemnt)=>
               <tr>
                 <td>{elemnt.nomequipment}</td>
                 <td>{elemnt.marque}</td>

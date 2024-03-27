@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function UseEffectLogin(props){
 
-  const {dataadmine , dataUtilisateur , setDatautilisateur ,idUtili ,setidUtili ,admineId,setadmineId }=props
+  const {dataadmine , dataUtilisateur , setDatautilisateur ,admineId,setadmineId ,setutiliID}=props
   const [inscri,setinscri]=useState(false)
   const [loginUA , setloginUA ] =useState("")
   const [passwordUA , setpasswordUA ] =useState("")
@@ -35,11 +35,15 @@ export default function UseEffectLogin(props){
 
     if(admineExist){
       setadmineId(admineExist.id);
+      localStorage.setItem("myValue", admineExist.id);
       navigate("/Accueil");
     }
     else if(utiliExists){
+      setutiliID(utiliExists.id)
+      localStorage.setItem("myID", utiliExists.id);
       navigate(`/profileUtili/${utiliExists.id}`)
-      // setidUtili(utiliExists.id)
+      
+      
       
     }
     else{
@@ -110,7 +114,7 @@ export default function UseEffectLogin(props){
             </div>
             <div className="input2login">
               <input style={{marginTop:"15px"}} type="password" placeholder="Password" value={passwordUA} onChange={(e)=>setpasswordUA(e.target.value)} />
-              <Link className="PASOublier">Oublier MotDePass ?</Link>
+              <Link className="PASOublier" to="/forgetPassword">Oublier MotDePass ?</Link>
             </div>
             <div className="boutonlogin">
               <input type="submit" value="Login" onClick={(e)=>loginAdmiUtili(e)} />

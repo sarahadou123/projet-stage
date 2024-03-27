@@ -1,16 +1,17 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState ,useEffect } from "react";
 import  axios  from "axios";
 import {AiOutlineClose} from "react-icons/ai";
 import "../StyleCss/ProfileUtilisateur.css";
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Utilisateurs from "./Etulisateur";
 
 
 export default function ProfileUtili(props){
-  const {  dataUtilisateur , data, setdata , setDatautilisateur}=props
+  const {  dataUtilisateur , data, setdata , setDatautilisateur,utiliID}=props
   const [affecterEquipement, setaffecterEquipement] = useState(false);
   const [existUA, setexistUA ]=useState()
   const navigate=useNavigate()
@@ -40,7 +41,34 @@ export default function ProfileUtili(props){
   const [matriculeUtili, setmatriculeUtili]=useState("")
   const [loginUtili, setloginUtili]=useState("")
   const [passwordUtili, setpasswordUtili]=useState("")
+  
+  const initialValue = id || "";
+  const [idLOcaleSt, setidLOcaleSt] = useState(initialValue);
 
+  useEffect(() => {
+    setidLOcaleSt(idLOcaleSt)
+    localStorage.setItem("myValue", idLOcaleSt);
+  }, [idLOcaleSt]);
+
+  // Chargement des données utilisateur à partir du localStorage lors du chargement initial de la page
+  useEffect(() => {
+    const storedUserData = localStorage.getItem("userData");
+    if (storedUserData) {
+      setDatautilisateur(JSON.parse(storedUserData));
+    }
+  }, [setDatautilisateur]);
+
+  // Mise à jour des données utilisateur dans le localStorage lorsque les données changent
+  useEffect(() => {
+    localStorage.setItem("userData", JSON.stringify(dataUtilisateur));
+  }, [dataUtilisateur]);
+
+
+
+  
+
+   
+    
   const handleModelChange = (e) => {
     const selectedValue = e.target.value;
     setSelectedModel(selectedValue);
@@ -61,6 +89,7 @@ export default function ProfileUtili(props){
   }; 
   
   const utiliExists=dataUtilisateur.find(element => element.id == id );
+  console.log(utiliExists)
   const equipementsAffectes = data.filter(
     (element) => element.affectationetulisateur === utiliExists.matricule
   );
@@ -73,7 +102,9 @@ export default function ProfileUtili(props){
     setdetailEmplacement(emplacementDetails);
   };
 
-
+  // if(affecterEquipement==true){
+  //   setmatriculeUTilisateur(utiliExists.affectationetulisateur)
+  // }
 
   function AjoutEquipement(e){
     // e.preventDefault()
@@ -90,7 +121,7 @@ export default function ProfileUtili(props){
           localisation: LocalisationE,
           Observation: ObservationE
       },
-      affectationetulisateur:matriculeUTilisateur,
+      affectationetulisateur:utiliExists.matricule,
       numeromarche:NumMarche
     };
     const nbAfectUTILI={
@@ -107,7 +138,7 @@ export default function ProfileUtili(props){
     setNumsérie("");
     setCAB("");
     setNumMarche("");
-    setmatriculeUTilisateur("");
+    // setmatriculeUTilisateur("");
     setEmplacementCAB("");
     setSiteEplac("");
     setCodeLocaleE("");
@@ -141,6 +172,7 @@ export default function ProfileUtili(props){
       utiliExists.nom = nomUtili;
       utiliExists.prenom = prenomUtili;
       utiliExists.matricule = matriculeUtili;
+      utiliExists.nbraffectation=equipementsAffectes.length
     }
     axios.put(`http://localhost:2000/etulisateur/${utiliExists.id}`, utiliExists)
       .then(response => {
@@ -155,7 +187,7 @@ export default function ProfileUtili(props){
       <div className="headerProfilU">
       <ToastContainer />
         <div>
-          <p className="P1headerUt">Bonjour <span>{utiliExists.prenom}</span> </p>
+          <p className="P1headerUt">Bonjour <span>{utiliExists && utiliExists.prenom}</span> </p>
           <p className="P2headerUt">{equipementsAffectes.length}</p>
         </div>
         <div className="butonoutP">
@@ -172,8 +204,8 @@ export default function ProfileUtili(props){
         </div>
         <button className="ptnediteProfile" onClick={()=>EditeProfile()} >Edite Profile</button>
         <div className="divformation">
-          <p className="p1"> <span>{utiliExists.nom}</span> {utiliExists.prenom}</p>
-          <p className="p3">{utiliExists.matricule}</p>
+          <p className="p1"> <span>{utiliExists && utiliExists.nom}</span> {utiliExists && utiliExists.prenom}</p>
+          <p className="p3">{utiliExists && utiliExists.matricule}</p>
           <p className="p3"> Nbr equipement affecter :{equipementsAffectes.length} </p>
           <div className="conAFF">
             <p className="mesE">Mes Equipements</p>
@@ -296,10 +328,10 @@ export default function ProfileUtili(props){
                                           <label>N°Marche :</label>
                                           <input type="text" name="NumMarche" value={NumMarche} onChange={(e)=>setNumMarche(e.target.value)} />
                                         </div>
-                                        <div className="divINP1">
+                                        {/* <div className="divINP1">
                                           <label>matricule UTilisateur :</label>
-                                          <input type="text" name="matriculeUtil" value={matriculeUTilisateur} onChange={(e)=>setmatriculeUTilisateur(e.target.value)} />
-                                        </div>
+                                          <input type="text" name="matriculeUtil" value={matriculeUTilisateur}   />
+                                        </div> */}
 
                                 </div>
                                 <div className="btnLAffecter">

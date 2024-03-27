@@ -9,15 +9,30 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function ListeEquipement(props) {
+  const {admineId ,data ,setdata ,searchA ,setsearchA }=props
   const [detailEmplacement, setdetailEmplacement] = useState(null);
+  const [search,setsearch]=useState(searchA)
+  const [datasearch,setdatasearch]=useState([])
+  const [showProfile, setShowProfile] = useState(false);
+  const navigate=useNavigate()
+  const [data1DMINE, setdata1DMINE ]=useState([])
+  const [vide,setvide]=useState("")
+  
 
-  const {admineId ,data ,setdata }=props
-    const [showProfile, setShowProfile] = useState(false);
-    const navigate=useNavigate()
-    const [data1DMINE, setdata1DMINE ]=useState([])
+    function searcher(e){
+      e.preventDefault()
+      setdatasearch(data.filter(element => element.codebar === search.trim().toUpperCase() || element.nomequipment.toUpperCase() ===search.trim().toUpperCase() || element.marque.toUpperCase() ===search.trim().toUpperCase() || element.affectationetulisateur.toUpperCase() ===search.trim().toUpperCase() || element.numeromarche ===search.trim().toUpperCase() ))
+      setvide(search)
 
+      setsearchA("") 
+      localStorage.setItem("mysearch","");
+    }
 
-    
+    useEffect(() => {
+      if (searchA) {
+        searcher(new Event('click')); // Simuler un clic sur le bouton de recherche
+      }
+    }, [searchA]);
 
     useEffect( ()=>
     {
@@ -90,10 +105,11 @@ export default function ListeEquipement(props) {
             <h4>D'Equipements</h4>
           </div>
           <div className="searchdiv">
-            <AiOutlineSearch className="iconesearch" />
-            <input type="text" name="search" id="search" placeholder="Search" />
-                  
-                      <img className="imgprofile" src="profilprojet.jpg"  onClick={() => setShowProfile(true)}  />
+            <form onSubmit={(e)=>searcher(e)}>
+              <button className="iconesearch"   type="submit"><AiOutlineSearch  /></button>
+              <input  type="text" name="search" id="search" placeholder="Search" value={search} onChange={(e)=>setsearch(e.target.value)} />
+            </form>
+            <img className="imgprofile" src="profilprojet.jpg"  onClick={() => setShowProfile(true)}  />
                
           </div>
 
@@ -119,7 +135,7 @@ export default function ListeEquipement(props) {
                                   <p> <IoPersonAddOutline /><Link to="/AjouterAdmin">ajouter un autre compte</Link></p>
                                 </div>
                               </div>
-                              )}
+                              ) }
             </div>
         </div>
     <div className="contEmpl">
@@ -157,22 +173,46 @@ export default function ListeEquipement(props) {
             </tr>
           </thead>
           <tbody>
-            {data.map((element, index) => (
-              <tr key={index}>
-                <td>{element.nomequipment}</td>
-                <td>{element.marque}</td>
-                <td>{element.modele}</td>
-                <td>{element.serie}</td>
-                <td>{element.codebar}</td>
-                <td>
-                  <Link onClick={() => handleEmplacementClick(element.emplacement)}>
-                    {element.emplacement.codebar}
-                  </Link>
-                </td>
-                <td>{element.affectationetulisateur}</td>
-                <td>{element.numeromarche}</td>
-              </tr>
-            ))}
+            
+            {datasearch.length >0 ? 
+                datasearch.map((element, index) => (
+                  <tr key={index}>
+                    <td>{element.nomequipment}</td>
+                    <td>{element.marque}</td>
+                    <td>{element.modele}</td>
+                    <td>{element.serie}</td>
+                    <td>{element.codebar}</td>
+                    <td>
+                      <Link onClick={() => handleEmplacementClick(element.emplacement)}>
+                        {element.emplacement.codebar}
+                      </Link>
+                    </td>
+                    <td>{element.affectationetulisateur}</td>
+                    <td>{element.numeromarche}</td>
+                  </tr>
+                ))
+                :
+                datasearch == 0 && vide !==""  ?(
+                  <tr>
+                    <td colSpan={8}> Aucun equipement avec CAB ({search})</td>
+                  </tr>
+                )
+                : data.map((element, index) => (
+                  <tr key={index}>
+                    <td>{element.nomequipment}</td>
+                    <td>{element.marque}</td>
+                    <td>{element.modele}</td>
+                    <td>{element.serie}</td>
+                    <td>{element.codebar}</td>
+                    <td>
+                      <Link onClick={() => handleEmplacementClick(element.emplacement)}>
+                        {element.emplacement.codebar}
+                      </Link>
+                    </td>
+                    <td>{element.affectationetulisateur}</td>
+                    <td>{element.numeromarche}</td>
+                  </tr>
+                ))}
           </tbody>
           <tfoot>
             <tr>

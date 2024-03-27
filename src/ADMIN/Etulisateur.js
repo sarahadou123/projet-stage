@@ -6,16 +6,25 @@ import Header from "./header";
 import axios from "axios";
 import "../StyleCss/Accueilstyle.css";
 import { useNavigate } from "react-router-dom";
-import { IoOpenOutline,IoPersonAddOutline } from "react-icons/io5";
+import { IoOpenOutline,IoPersonAddOutline } from "react-icons/io5"; 
 
 export default function Utilisateurs(props) {
   const [dataetu, setdataetu] = useState([]);
-  const {admineId }=props
+  const {admineId ,dataUtilisateur}=props
   const [showProfile, setShowProfile] = useState(false);
   const navigate=useNavigate()
   const [data1DMINE, setdata1DMINE ]=useState([])
 
+  const [search,setsearch]=useState("")
+  const [datasearch,setdatasearch]=useState([])
+  const [vide,setvide]=useState("")
 
+
+  function searcher(e){
+    e.preventDefault()
+    setdatasearch(dataUtilisateur.filter(element => element.matricule.toUpperCase() === search.trim().toUpperCase() || element.nom.trim().toUpperCase().startsWith(search.trim().toUpperCase() )  || element.prenom.trim().toUpperCase().startsWith(search.trim().toUpperCase() ) ))
+    setvide(search)
+  }
   
 
   useEffect( ()=>
@@ -104,10 +113,11 @@ export default function Utilisateurs(props) {
             <h4>D'Equipements</h4>
           </div>
           <div className="searchdiv">
-            <AiOutlineSearch className="iconesearch" />
-            <input type="text" name="search" id="search" placeholder="Search" />
-                  
-                      <img className="imgprofile" src="profilprojet.jpg"  onClick={() => setShowProfile(true)}  />
+            <form onSubmit={(e)=>searcher(e)}>
+              <button className="iconesearch"   type="submit"><AiOutlineSearch  /></button>
+              <input  type="text" name="search" id="search" placeholder="Search" value={search} onChange={(e)=>setsearch(e.target.value)} />
+            </form>
+            <img className="imgprofile" src="profilprojet.jpg"  onClick={() => setShowProfile(true)}  />
                
           </div>
 
@@ -150,7 +160,23 @@ export default function Utilisateurs(props) {
             </tr>
           </thead>
           <tbody>
-            {dataetu.map((etu, index) => (
+            {datasearch.length >0 ? 
+                datasearch.map((etu, index) => (
+                  <tr key={index}>
+                    <td>{etu.matricule}</td>
+                    <td>{etu.nom}</td>
+                    <td>{etu.prenom}</td>
+                    <td>{etu.nbraffectation}</td>
+                    <td><button onClick={() => supprimerUtilisateur(etu.id)} className="btnsuppe"><BsTrash3 /></button></td>
+                  </tr>
+                ))
+                :
+                datasearch == 0 && vide !==""  ?(
+                  <tr>
+                    <td colSpan={8}> Aucun Utilisateurs avec ce Matricule ({search})</td>
+                  </tr>
+                )
+            :dataetu.map((etu, index) => (
               <tr key={index}>
                 <td>{etu.matricule}</td>
                 <td>{etu.nom}</td>

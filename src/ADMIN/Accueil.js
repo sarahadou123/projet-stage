@@ -11,10 +11,24 @@ import axios from "axios";
 
 // import Login from "../Loginpage";
 export default function Accueil(props) {
-    const {admineId }=props
+    const {admineId ,setsearchA,searchA}=props
     const [showProfile, setShowProfile] = useState(false);
     const navigate=useNavigate()
     const [data1DMINE, setdata1DMINE ]=useState([])
+
+    
+  
+
+    function searcher(e){
+      e.preventDefault()
+      navigate("/Equipement")
+      
+      
+    }
+    function handlersearch(e){
+      setsearchA(e.target.value) 
+      localStorage.setItem("mysearch", e.target.value);
+    }
 
 
     
@@ -88,10 +102,11 @@ export default function Accueil(props) {
             <h4>D'Equipements</h4>
           </div>
           <div className="searchdiv">
-            <AiOutlineSearch className="iconesearch" />
-            <input type="text" name="search" id="search" placeholder="Search" />
-                  
-                      <img className="imgprofile" src="profilprojet.jpg"  onClick={() => setShowProfile(true)}  />
+            <form onSubmit={(e)=>searcher(e)}>
+              <button className="iconesearch"   type="submit"><AiOutlineSearch  /></button>
+              <input  type="text" name="search" id="search" placeholder="Search" value={searchA} onChange={(e)=>handlersearch(e)} />
+            </form>    
+            <img className="imgprofile" src="profilprojet.jpg"  onClick={() => setShowProfile(true)}  />
                
           </div>
 
