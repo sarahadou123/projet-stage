@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function UseEffectLogin(props){
 
-  const {dataadmine , dataUtilisateur , setDatautilisateur ,admineId,setadmineId ,setutiliID, setidAdmin,idAdmin,idUtili ,setidUtili }=props
+  const { setloginconfirm,dataadmine , dataUtilisateur , setDatautilisateur ,admineId,setadmineId ,setutiliID, setidAdmin,idAdmin,idUtili ,setidUtili }=props
   const [inscri,setinscri]=useState(false)
   const [loginUA , setloginUA ] =useState("")
   const [passwordUA , setpasswordUA ] =useState("")
@@ -25,14 +25,17 @@ export default function UseEffectLogin(props){
   const [nbraffectation,setnbraffectation]=useState(0)
 
 
+
   const navigate=useNavigate()
 
   function loginAdmiUtili(e){
     e.preventDefault()
-
+    
     const admineExist=dataadmine.find(element => element.login ==  loginUA && element.password == passwordUA  );
     const utiliExists=dataUtilisateur.find(element => element.login ==  loginUA && element.password == passwordUA  );
 
+   
+    
     if(admineExist){
       setadmineId(admineExist.id);
       setidAdmin(admineExist.id)
@@ -54,6 +57,21 @@ export default function UseEffectLogin(props){
       })
     }
   }
+
+  function verifidlogin(e){
+    e.preventDefault()
+    console.log(loginUA)
+    const loginexist=dataUtilisateur.find(element => element.login ==  loginUA  );
+    if(loginexist){
+      setloginconfirm(loginexist.login)
+      localStorage.setItem("mylogin", loginexist.login);
+      navigate("/forgetPassword")
+    }
+    else{
+      alert ("ce login n'exist pas ")
+    }
+  }
+
   function inscrire(e){
     e.preventDefault()
 
@@ -115,7 +133,7 @@ export default function UseEffectLogin(props){
             </div>
             <div className="input2login">
               <input style={{marginTop:"15px"}} type="password" placeholder="Password" value={passwordUA} onChange={(e)=>setpasswordUA(e.target.value)} />
-              <Link className="PASOublier" to="/forgetPassword">Oublier MotDePass ?</Link>
+              <Link className="PASOublier"  onClick={(e)=>verifidlogin(e)}>Oublier MotDePass ?</Link>
             </div>
             <div className="boutonlogin">
               <input type="submit" value="Login" onClick={(e)=>loginAdmiUtili(e)} />

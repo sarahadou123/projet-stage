@@ -10,7 +10,7 @@ import Login from "./login";
 import axios from "axios";
 import ProfileUtilisatuer from "./profileUtilisateur"
 import Header from "./header";
-// import PasswordForget from "./PasswordForget"
+import PasswordForget from "./PasswordForget"
 
 function App() {
   const [dataadmine, setdataadmine]=useState([])
@@ -28,6 +28,10 @@ function App() {
   const [activitesequip, setactivitesequip] = useState([]);
   const initialidd = localStorage.getItem("myID") || "valeur par défaut";
   const [idAdmin,setidAdmin]=useState(initialidd)
+
+
+  const initialogin = localStorage.getItem("mylogin") || "";
+  const [loginconfirm , setloginconfirm]=useState(initialogin)
 
   
 
@@ -90,16 +94,16 @@ function App() {
 
         <Routes>
           
-          <Route path="/" exact element={<Login setutiliID={setutiliID}   dataadmine={dataadmine}    dataUtilisateur={dataUtilisateur}  setDatautilisateur={setDatautilisateur}   setadmineId={setadmineId} admineId={admineId} idAdmin={idAdmin} setidAdmin={setidAdmin} />} />
+          <Route path="/" exact element={<Login setutiliID={setutiliID}   dataadmine={dataadmine}    dataUtilisateur={dataUtilisateur}  setDatautilisateur={setDatautilisateur}   setadmineId={setadmineId} admineId={admineId} idAdmin={idAdmin} setidAdmin={setidAdmin} setloginconfirm={setloginconfirm}/>} />
           <Route path="/Accueil" exact element={<Accueil admineId={admineId}  dataadmine={dataadmine} setsearchA={setsearchA} searchA={searchA} data={data}  dataUtilisateur={dataUtilisateur}/>} />
           <Route path="/Profile"  element={<ProfileAdmin idAdmin={idAdmin} dataadmine={dataadmine}  activitesetu={activitesetu} setActivitesetu={setActivitesetu}  />} />
-          <Route path="/header" element={<Header   admineId={admineId}  dataadmine={dataadmine}/>} />
+          {/* <Route path="/header" element={<Header   admineId={admineId}  dataadmine={dataadmine}/>} /> */}
           <Route path="/Equipement"  element={<ListeEquipement admineId={admineId} dataadmine={dataadmine} data={data} setdata={setdata} searchA={searchA} setsearchA={setsearchA}/>} />
           <Route path="/Emplacement" element={<EquipemntEpla admineId={admineId} idAdmin={idAdmin} data={data} setdata={setdata} dataadmine ={dataadmine}  activitesequip={activitesequip} setactivitesequip={setactivitesequip} />} />
           <Route path="/Etulisateur" element={<Etulisateur admineId={admineId} activitesetu={activitesetu} setActivitesetu={setActivitesetu} dataUtilisateur={dataUtilisateur}  />}  />
           <Route path="/AjouterAdmin" element={<FormulaireContact/>} dataadmine={dataadmine} setdataadmine={setdataadmine}  />
           <Route path="/profileUtili/:id" element={<ProfileUtilisatuer utiliID={utiliID} data={data} setdata={setdata}   dataUtilisateur={dataUtilisateur} setDatautilisateur={setDatautilisateur} />}/>        
-          {/* <Route path="/forgetPassword"   element={<PasswordForget/>}/>  */}
+          <Route path="/forgetPassword"   element={<PasswordForget loginconfirm={loginconfirm} dataUtilisateur={dataUtilisateur} />}/> 
 
           
         </Routes>
