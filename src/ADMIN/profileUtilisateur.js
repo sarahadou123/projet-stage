@@ -185,7 +185,7 @@ export default function ProfileUtili(props){
   return(
     <div>
       <div className="headerProfilU">
-      <ToastContainer />
+       <ToastContainer />
         <div>
           <p className="P1headerUt">Bonjour <span>{utiliExists && utiliExists.prenom}</span> </p>
           <p className="P2headerUt">{equipementsAffectes.length}</p>

@@ -433,3 +433,262 @@
     margin-top: 7px;
     color: black;
   }
+
+  @media screen and (min-width:980px) and (max-width:1225px) {
+    .headerProfilU{
+      /* background: #b46464; */
+      margin-left: 60px;
+    }
+    .P1headerUt{
+      margin-left: -400px;
+    }
+    .P2headerUt{
+      margin-left: -400px;
+    }
+    .Mequipement{
+      width: 95%;
+      border-radius: 8px;
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+      padding: 20px 70px;
+      padding-bottom: 40px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      height: 150px;
+    }
+    .AffecterEqProfile{
+      margin-left: 230px;
+    }
+    .AffecterEq{
+      margin-left:150px ;
+    }
+  }
+@media screen and (min-width:768px) and (max-width:980px) {
+  .headerProfilU{
+    /* background: #b46464; */
+    margin-left: 60px;
+  }
+ 
+  .P1headerUt{
+    margin-left: -300px;
+  }
+  .P2headerUt{
+    margin-left: -300px;
+  }
+  .header2Cont{
+    margin-left: 50px;
+  }
+  .divformation .p1{
+    margin-left: -60px;
+  }
+  .divformation .p3{
+    margin-left: -60px;
+  }
+  .conAFF{
+    margin-left: -60px;
+    width: 100%;
+  }
+  .Mequipement{
+    height: 190px;
+  }
+  .AffecterEqProfile{
+    margin-left: 110px;
+  }
+  
+  .AffecterEq{
+    margin-left:100px ;
+    margin-top: -50px;
+    width: 580px;
+    height: 580px;
+  }
+  .btnLAffecter{
+    margin-right:20px;
+  }
+
+}
+@media screen and (min-width:681px) and (max-width:768px) {
+  .headerProfilU{
+    /* background: #b46464; */
+    margin-left: 60px;
+  }
+  .P1headerUt{
+    margin-left: -200px;
+  }
+  .P2headerUt{
+    margin-left: -200px;
+  }
+  .header2Cont{
+    margin-left: 50px;
+  }
+  .divformation .p1{
+    margin-left: -60px;
+  }
+  .divformation .p3{
+    margin-left: -60px;
+  }
+  .conAFF{
+    margin-left: -60px;
+    width: 100%;
+  }
+  .Mequipement{
+    height: 250px;
+    width: 400px;
+  }
+  .AffecterEqProfile{
+    margin-left: 50px;
+  }
+  .AffecterEq{
+    margin-left:50px ;
+    margin-top: -50px;
+    width: 580px;
+    height: 580px;
+  }
+  .btnLAffecter{
+    margin-right:20px;
+  }
+}
+@media screen and (min-width:540px) and (max-width:681px) {
+  .headerProfilU{
+    /* background: #b46464; */
+    margin-left: 30px;
+  }
+  .P1headerUt{
+    margin-left: -150px;
+  }
+  .P2headerUt{
+    margin-left: -150px;
+  }
+  .containerProfileU{
+    margin-left: 30px;
+  }
+  .header2Cont{
+    margin-left: 30px;
+  }
+  .divformation .p1{
+    margin-left: -60px;
+  }
+  .divformation .p3{
+    margin-left: -60px;
+  }
+  .conAFF{
+    margin-left: -60px;
+    width: 100%;
+  }
+  .Mequipement{
+    height: 250px;
+    width: 340px;
+  }
+  .AffecterEqProfile{
+    margin-left: 30px;
+    width: 570px;
+  }
+  .AffecterEq{
+    margin-left:20px ;
+    margin-top: -50px;
+    width: 550px;
+    height: 580px;
+    padding-left: 20px ;
+  }
+  .btnLAffecter{
+    margin-right:20px;
+  }
+  .contaifor{
+    margin-left: 10px;
+  }
+  .h2ajE{
+    width: 103.7%;
+    margin-left:-20px;
+  }
+}
+@media screen and (min-width:381px) and (max-width:681px) {
+  .headerProfilU{
+    background: #b46464;
+    margin-left: 30px;
+  }
+  .P1headerUt{
+    margin-left: -150px;
+  }
+  .P2headerUt{
+    margin-left: -150px;
+  }
+  .containerProfileU{
+    margin-left: 30px;
+  }
+  .header2Cont{
+    margin-left: 30px;
+  }
+  .divformation .p1{
+    margin-left: -60px;
+  }
+  .divformation .p3{
+    margin-left: -60px;
+  }
+  .conAFF{
+    margin-left: -60px;
+    width: 110%;
+  }
+  .Mequipement{
+    height: 300px;
+    width: 300px;
+  }
+  .Mequipement{
+    padding-left: 50px;
+    padding-right: 30px;
+  }
+  .btnAffecter{
+    font-size: 13px;
+    margin-right: 1px;
+  }
+  .AffecterEqProfile{
+    margin-left: 30px;
+    width: 400px;
+    height: 550px;
+  }
+  .minicontainer{
+    margin-left:10px ;
+    margin-top: 10px;
+  }
+  .btnLEdite input{
+    float: right;
+    margin-top: 30px;
+    margin-right: 160px;
+    border: 1px solid ;
+    width: 120px;
+    border-radius:5px; 
+    background-color: rgb(97, 97, 155);
+    color: white;
+  }
+  .AffecterEq{
+    margin-left:10px ;
+    margin-top: -50px;
+    width: 420px;
+    height: 580px;
+    padding-left: 20px ;
+  }
+  .btnLAffecter{
+    margin-right:20px;
+  }
+  .contaifor{
+    margin-left: 10px;
+  }
+  .h2ajE{
+    width: 104.6%;
+    margin-left:-20px;
+  }
+  .divINP1 input{
+    border: 1px solid blue ;
+    border-radius: 5px;
+    width: 150px;
+    outline: none;
+    
+  }
+  .divINP1 select{
+    border: 1px solid blue ;
+    border-radius: 5px;
+    width: 150px;
+    height: 28px;
+    padding-left: 10px;
+    outline: none;
+    font-size: 12px;
+  }
+}
