@@ -115,7 +115,7 @@ export default function Accueil(props) {
       </div>
 
       
-
+    <div className="scrole">  
       <div className="divA">
         <div className="topbar">
           <div className="logoA">
@@ -134,9 +134,10 @@ export default function Accueil(props) {
 
           
         </div>
+          
         <div>
               {showProfile && (
-                              <div>
+                              <div className="classname">
                                   <div className="profile-container">
                                     <div className="profile-picture">
                                     <img src="profilprojet.jpg" alt="Photo de profil" />
@@ -148,20 +149,21 @@ export default function Accueil(props) {
                                         <button className="buutonprofil" onClick={() => setShowProfile(false)}>Fermer</button>  
                                             
                                     </div>
-
+                                    <div className="div77">
+                                      <p> <IoPersonAddOutline /><Link to="/AjouterAdmin">ajouter un autre compte</Link></p>
+                                    </div>
                                 </div>
-                                <div className="div77">
-                                  <p> <IoPersonAddOutline /><Link to="/AjouterAdmin">ajouter un autre compte</Link></p>
-                                </div>
+                                
                               </div>
                               )}
             
         </div>
 
-
+    
       
-      
+     
       <div className="header">
+        
         <div>
           <p className="pHES">Data d'aujourd'hui</p>
           <div className="ensemDiv">
@@ -188,8 +190,11 @@ export default function Accueil(props) {
         </div>
       </div>
       </div>
+    
+      <div className='contTableuaccui'>
       <div className="tabHAcceuil">
         <p className="pT">Last affectation</p>
+        <div className='overFlo'>
         <table>
           <thead>
             <tr>
@@ -231,11 +236,12 @@ export default function Accueil(props) {
           </tfoot>
         </table>
       </div>
+      </div>
 
-
+      </div>
           
     </div>
-   
+  </div> 
           
   );
 }

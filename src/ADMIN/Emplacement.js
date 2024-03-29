@@ -363,11 +363,11 @@ console.log("prenomAdmin:", prenomAdmin);
                                         <button className="buutonprofil" onClick={() => setShowProfile(false)}>Fermer</button>  
                                             
                                     </div>
-
+                                    <div className="div77">
+                                      <p> <IoPersonAddOutline /><Link to="/AjouterAdmin">ajouter un autre compte</Link></p>
+                                    </div>
                                 </div>
-                                <div className="div77">
-                                  <p> <IoPersonAddOutline /><Link to="/AjouterAdmin">ajouter un autre compte</Link></p>
-                                </div>
+                                
                               </div>
                               )}
             </div>

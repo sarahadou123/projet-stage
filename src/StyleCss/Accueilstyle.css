@@ -10,7 +10,7 @@ body{
   width: 80.2px;
   background-color: rgb(98, 98, 164);
   color: white;
-  height: 654px;
+  height: 664px;
   position: sticky;
   transition: all 0.Ts linear;
   overflow: hidden;
@@ -20,7 +20,7 @@ body{
 .sidbar:hover{
   width:222px ;
   transition: 0.5s;
-  height: 654px;
+  height: 664px;
 }
 .menu{
   list-style-type: none;
@@ -138,7 +138,7 @@ body{
 
 .header{
   position: relative;
-   z-index: 1;
+  z-index: 1;
   display: flex;
   justify-content:left;
   align-items: center;
@@ -148,7 +148,7 @@ body{
   padding-bottom:5px ;
   margin-top: 10px;
   justify-content: center;
-  margin-right: 20px;
+  margin-right: 2px;
 }
 .formEMp{
   width: 500px;
@@ -193,7 +193,7 @@ body{
 
 /* table a */
 .tabHAcceuil{
-   justify-content: space-between;
+  justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -213,10 +213,11 @@ body{
   background: #fff;
   padding-bottom:5px ;
   margin-top: 10px;
-  margin-right: 20px;
- 
-  
+  margin-right: 20px; 
+  overflow: auto;
 }
+  
+
 .pT{
   margin-top: 10px;
   margin-left: 30px;
@@ -232,6 +233,7 @@ table{
   width: 95%;
   margin-left: 30px;
  margin-bottom: 40px;
+ 
 }
 table td, th{
   padding: 0.4rem 0.8rem;
@@ -444,6 +446,7 @@ border-radius: 10px;
 background: #fff;
 margin-right: 20px;
 margin-top: 10px;
+overflow: auto;
 }
 .pTU{
 margin-left: 30px;
@@ -463,8 +466,8 @@ float: left;
   border-radius: 8px  8px 0px 0px ;
   padding: 20px;
   z-index: 2;
-  margin-top: -10px;
-  margin-left: 850px;
+  /* margin-top: -0px; */
+  margin-left: 830px;
 }
 
 .profile-picture {
@@ -507,12 +510,12 @@ float: left;
   position: absolute;
   z-index: 2;
   left: 30; /* aligné à gauche */
-  width: 30.35%; /* occupe toute la largeur du profile-container */
+  width: 100.5%; /* occupe toute la largeur du profile-container */
   background-color: #b8bcb8;
   padding: 10px;
   border-radius: 0px 0px 8px  8px;
-  margin-left: 850px;
-  margin-top: 170px;
+  /* margin-left: 850px; */
+  margin-top: 230px;
 }
 /* formulaire ajouter admin */
 
@@ -637,7 +640,350 @@ label {
   max-height: 560px;
   border-radius: 20px;
   margin-top: 10px;
+  
 }
+.contTableuaccui{
+  overflow:hidden;
+  /* width: 100%; */
+}
+.overFlo{
+  overflow: auto;
+  width: 95%;
+}
+
+@media screen and (min-width:980px) and (max-width:1200px) {
+  /* .topbar{
+    background-color: #007bff;
+  } */
+  .profile-container{
+    margin-left: 600px;
+  }
+  .divH1{
+    width: 250px;
+  }
+  .ensemDiv{
+    margin-left: -10px;
+  }
+  .formEMp td input,
+  .formEMp td select {
+    width: 150px;
+    margin-bottom: 5px; 
+  }
+  .formEMp input::placeholder {
+    font-size: 12px;
+  }
+  .formEMp select {
+    font-size: 12px;
+  }
+  .trtr3button3{
+    margin-left: -280px;
+  }
+  .header{
+    margin-right: 20px;
+  }
+}
+@media screen and (min-width:770px) and (max-width:980px) {
+  .topbar{
+    /* background-color: #007bff; */
+    margin-top: -10px;
+  }
+  
+  .profile-container{
+    margin-left: 290px;
+  }
+  .sidbar{
+    margin-top: -20px;
+  }
+  .divH1{
+    width: 260px;
+    justify-content: center;
+  }
+  .scrole{
+    margin-top: -40px;
+    overflow-y: scroll; 
+    max-height: 630px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  .header{
+    padding-left: 50px;
+    margin-right: 20px;
+    overflow: auto;
+  }
+  .formEMp{
+    margin-left: -20px;
+  }
+  .formEMp td input,
+  .formEMp td select {
+    width: 150px;
+    margin-bottom: 5px; 
+  }
+  .formEMp input::placeholder {
+    font-size: 12px;
+  }
+  .formEMp select {
+    font-size: 12px;
+  }
+  .trtr3button3{
+    margin-left: -280px;
+  }
+  
+  
+
+}
+@media screen and (min-width:581px) and (max-width:768px) {
+  .topbar{
+    /* background-color: #007bff; */
+    margin-top: -10px;
+  }
+  .classname{
+    margin-left:-100px ;
+  }
+  .profile-container{
+    margin-left:170px;
+  }
+  .divdetailEmplacement{
+    width: 350px;
+    padding-left: 100px;
+    margin-left: -180px;
+  }
+  
+  .sidbar{
+    margin-top: -20px;
+  }
+  .divH1{
+    width: 260px;
+    height: 120px;
+    font-size: 15px;
+    justify-content: center;
+  }
+  .scrole{
+    margin-top: -40px;
+    overflow-y: scroll; 
+    max-height: 630px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  .header{
+    padding-left: 80px;
+    align-items: center;
+    overflow: auto;
+  }
+  .logoA p{
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+  .logoA h4{
+    font-weight: bold;
+    font-size: 18px;
+  }
+  .searchdiv{
+    margin-top: 10px;
+  }
+  .searchdiv input{
+    border: 1px rgb(229, 226, 221);
+    padding-left: 40px;
+    height: 40px;
+    background-color: rgb(229, 226, 221);
+    border-radius: 12px;
+    position: relative;
+    margin-right: 20px;
+    width: 170px;
+  }
+  .iconesearch{
+    font-size: 19px;
+  }
+  .iconesearch:hover{
+    font-size: 22px;
+  }
+  .formEMp{
+    margin-left: -20px;
+  }
+  
+  .formEMp tr {
+    display: block; 
+    margin-bottom: 10px; 
+  }
+  .formEMp td {
+      display: block; 
+      width: 100%; 
+      margin-bottom: 10px; 
+    }
+    .formEMp td input,
+    .formEMp td select {
+      width: 90%; 
+      margin-bottom: 5px; 
+    }
+    .trtr3button3 {
+      margin-top: 200px;
+      margin-left: -210px;
+    }
+    .trtr3button3 td{
+      display: inline;
+      /* margin-left: -10px; */
+    }
+    .buttonfo{
+      margin-left: 0px;
+      margin-bottom: -55px;
+    }
+    .searchdiv{
+      margin-top: 10px;
+      margin-right: 5px;
+    }
+    .searchdiv input{
+      border: 1px rgb(229, 226, 221);
+      padding-left: 40px;
+      height: 40px;
+      background-color: rgb(229, 226, 221);
+      border-radius: 12px;
+      position: relative;
+      margin-right: 20px;
+      width: 110px;
+    }
+    .searchdiv input::placeholder{
+      font-size: 14px;
+      position: absolute;
+      margin-left: -1px;
+    }
+    .imgprofile{
+      margin-left: -15px;
+    }
+    
+  
+
+}
+@media screen and (min-width:400px) and (max-width:581px) {
+  .topbar{
+    background-color: #007bff;
+    margin-top: -10px;
+  }
+  .divdetailEmplacement{
+    width: 250px;
+    padding-left: 30px;
+    margin-left: -140px;
+  }
+  .classname{
+    margin-left:-100px ;
+  }
+  .profile-container{
+    margin-left:110px;
+    width: 300px;
+  }
+  .sidbar{
+    margin-top: -20px;
+  }
+  .divH1{
+    width: 260px;
+    height: 120px;
+    font-size: 15px;
+    justify-content: center;
+  }
+  .scrole{
+    margin-top: -40px;
+    overflow-y: scroll; 
+    max-height: 630px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  .header{
+    padding-left: 19px;
+    align-items: center;
+  }
+  .logoA p{
+    margin-left: -20px;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+  .logoA h4{
+    margin-left: -20px;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  .searchdiv{
+    margin-top: 10px;
+    margin-right: 5px;
+  }
+  .searchdiv input{
+    border: 1px rgb(229, 226, 221);
+    padding-left: 40px;
+    height: 40px;
+    background-color: rgb(229, 226, 221);
+    border-radius: 12px;
+    position: relative;
+    margin-right: 20px;
+    width: 99px;
+  }
+  .searchdiv input::placeholder{
+    font-size: 13px;
+    position: absolute;
+    margin-left: -1px;
+  }
+  .divH1{
+    width:250px;
+  }
+  .iconesearch{
+    font-size: 19px;
+  }
+
+  .iconesearch:hover{
+    font-size: 22px;
+  }
+  .formEMp{
+    margin-left: -20px;
+  }
+  /* .header{
+    padding-left: -20px;
+  } */
+  
+  .formEMp tr {
+    display: block; 
+    margin-bottom: 10px; 
+  }
+  .formEMp td {
+      display: block; 
+      width: 100%; 
+      margin-left: 15px;
+      margin-bottom: 10px; 
+    }
+    .formEMp td input,
+    .formEMp td select {
+      width: 90%; 
+      margin-bottom: 5px; 
+    }
+    .trtr3button3 {
+      margin-top: 200px;
+      margin-left: -220px;
+    }
+    .trtr3button3 td{
+      display: inline;
+      /* margin-left: -10px; */
+    }
+    .buttonfo{
+      margin-left: 0px;
+      margin-bottom: -55px;
+    }
+    .sidbar:hover{
+      width:150px ;
+    }
+    .sidbar:link{
+      font-size: 12px;
+    }
+    .sidbar .iconeDashbord {
+      font-size: 26px;
+      /* width:150px ; */
+    }
+    .header{
+      overflow: auto;
+    }
+
+
+}
+
+
+
+
+
+
 
 
 
