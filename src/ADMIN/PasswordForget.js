@@ -33,19 +33,32 @@ export default function Useforgetpassword(props){
     e.preventDefault();
     // console.log(message)
     // Générer le code de confirmation avant d'envoyer le formulaire
-    generatemessage();
-
+    if (isValidEmail(email)) {
+     generatemessage();
+    
     setcodeConfirme(message)
     localStorage.setItem("mycode", message);
 
-    emailjs.sendForm('service_r5x09tr','template_52o8xgl', e.target, 'lFP6UhD6CTTcchHb6')
-      .then((result) => {
-        console.log('Email sent successfully:', result.text);
-      },
-      (error) => {
-        console.error('Failed to send email:', error.text);
-      });
+    emailjs.send('service_r5x09tr','template_g17rzat',{
+                to_email: email,
+                confirmation_code: message
+              }, 'lFP6UhD6CTTcchHb6')
+    .then((response) => {
+      console.log('Email sent:', response);
+      alert('Code de confirmation envoyé avec succès !');
       setetat(true)
+    }, (error) => {
+      console.error('Erreur lors de l\'envoi de l\'e-mail:', error);
+      alert('Une erreur s\'est produite lors de l\'envoi du code de confirmation.');
+    });
+    } else {
+      alert('Veuillez saisir une adresse e-mail valide.');
+      
+    }
+  };
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
   
 
