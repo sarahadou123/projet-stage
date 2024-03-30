@@ -650,7 +650,13 @@ label {
   overflow: auto;
   width: 95%;
 }
-
+.scrole{
+  margin-top: -40px;
+  overflow-y: scroll; 
+  max-height: 630px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
 @media screen and (min-width:980px) and (max-width:1200px) {
   /* .topbar{
     background-color: #007bff;

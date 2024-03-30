@@ -100,8 +100,8 @@ function App() {
           {/* <Route path="/header" element={<Header   admineId={admineId}  dataadmine={dataadmine}/>} /> */}
           <Route path="/Equipement"  element={<ListeEquipement admineId={admineId} dataadmine={dataadmine} data={data} setdata={setdata} searchA={searchA} setsearchA={setsearchA}/>} />
           <Route path="/Emplacement" element={<EquipemntEpla admineId={admineId} idAdmin={idAdmin} data={data} setdata={setdata} dataadmine ={dataadmine}  activitesequip={activitesequip} setactivitesequip={setactivitesequip} />} />
-          <Route path="/Etulisateur" element={<Etulisateur admineId={admineId} activitesetu={activitesetu} setActivitesetu={setActivitesetu} dataUtilisateur={dataUtilisateur}  />}  />
-          <Route path="/AjouterAdmin" element={<FormulaireContact/>} dataadmine={dataadmine} setdataadmine={setdataadmine}  />
+          <Route path="/Etulisateur" element={<Etulisateur admineId={admineId}  activitesetu={activitesetu} setActivitesetu={setActivitesetu} dataUtilisateur={dataUtilisateur}  />}  />
+          <Route path="/AjouterAdmin" element={<FormulaireContact dataadmine={dataadmine} setdataadmine={setdataadmine}/>}   />
           <Route path="/profileUtili/:id" element={<ProfileUtilisatuer utiliID={utiliID} data={data} setdata={setdata}   dataUtilisateur={dataUtilisateur} setDatautilisateur={setDatautilisateur} />}/>        
           <Route path="/forgetPassword"   element={<PasswordForget loginconfirm={loginconfirm} dataUtilisateur={dataUtilisateur} />}/> 
 
